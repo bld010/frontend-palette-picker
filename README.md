@@ -1,4 +1,7 @@
 [DTR](https://gist.github.com/gregoryanderson/98f483415e0978102a8d0038cc938188)
+
+and 
+
 [Clubhouse](https://app.clubhouse.io/briannadelvalle/stories/space/45/everything)
 
 
