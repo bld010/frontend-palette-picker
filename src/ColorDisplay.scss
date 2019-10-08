@@ -1,0 +1,9 @@
+.ColorDisplay {
+  display: flex;
+  flex-direction: row;
+
+  & > div{
+    width: 20%;
+    height: 70vh;
+  }
+}
