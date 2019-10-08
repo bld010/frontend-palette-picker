@@ -36,7 +36,6 @@ export default class ColorDisplay extends Component {
       name: name,
       colors: newColors
     }})
-    console.log(this.state.currentPalette)
   }
 
   generateNewRandomPalette = () => {
@@ -81,8 +80,8 @@ export default class ColorDisplay extends Component {
     let colors = this.state.currentPalette.colors;
 
     let colorsElements = colors.map((color, index) => {
-      return <div className="colorBlock">
-        <div className="color" key={index} style={{backgroundColor: color.hex}}>
+      return <div className="colorBlock" key={index}>
+        <div className="color"  style={{backgroundColor: color.hex}}>
           <div className="lock" onClick={() => this.toggleLock(index)}>
             {color.locked ? <MdLock size={62}/> : <MdLockOpen color="white" size={62}/>}
             {color.locked ? <p>locked</p> : <></>}
