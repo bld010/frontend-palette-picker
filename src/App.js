@@ -6,13 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPalette: {
-        color1: 'green',
-        color2: 'red',
-        color3: 'green',
-        color4: 'red',
-        color5: 'green'
-      }
+      currentPalette: null
     }
   }
 
@@ -21,9 +15,7 @@ class App extends Component {
     return(
       <main className="App">
         <h1>Palette Picker</h1>
-        {/* <ColorDisplay palette={this.state.currentPalette} /> */}
-        <ColorDisplay palette={null} />
-
+        <ColorDisplay palette={this.state.currentPalette} />
       </main>
     )
   }

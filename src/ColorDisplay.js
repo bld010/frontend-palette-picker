@@ -14,32 +14,88 @@ export default class ColorDisplay extends Component {
 
   componentDidMount = () => {
     if (this.props.palette === null) {
-      let randomPalette = {
-        name: '',
-        color1: randomColor(),
-        color2: randomColor(),
-        color3: randomColor(),
-        color4: randomColor(),
-        color5: randomColor()
-      }
-
-      this.setState({ currentPalette: randomPalette })
+      this.generateNewRandomPalette();
     }
+  }
+ 
+  toggleLock = (indexOfClickedColor) => {
+    let colors = this.state.currentPalette.colors;
+    let name = this.state.currentPalette.name;
+
+    let newColors = colors.map((color, index) => {
+      if (indexOfClickedColor === index) {
+        color.locked = !color.locked;
+        return color
+      } else { 
+        return color
+      }
+    })
+
+    this.setState({ currentPalette: {
+      name: name,
+      colors: newColors
+    }})
+    console.log(this.state.currentPalette)
+  }
+
+  generateNewRandomPalette = () => {
+    let randomPalette = {
+      name: '',
+      colors: [
+        { hex: randomColor(), locked: false },
+        { hex: randomColor(), locked: false },
+        { hex: randomColor(), locked: false },
+        { hex: randomColor(), locked: false },
+        { hex: randomColor(), locked: false }
+      ]
+    }
+
+    this.setState({ currentPalette: randomPalette })
+  
+  }
+
+  getNewColors = () => {
+    let colors = this.state.currentPalette.colors;
+    let name = this.state.currentPalette.name;
+
+    let newColors = colors.map(color => {
+      if (color.locked) {
+        return color
+      } else {
+        return { hex: randomColor(), locked: false }
+      }
+    })
+
+
+
+    this.setState({ currentPalette: {
+      name: name,
+      colors: newColors
+    }})
+
+    this.generateColorsElements();
+  }
+
+  generateColorsElements = () => {
+    let colors = this.state.currentPalette.colors;
+
+    let colorsElements = colors.map((color, index) => {
+      return <div key={index} style={{backgroundColor: color.hex}}>
+          <p>color{index}</p>
+          <p onClick={() => this.toggleLock(index)}>lock</p>
+        </div>
+    })
+    
+    return colorsElements;
   }
 
   render = () => {
-
-    
     if (this.state.currentPalette !== null) {
-      let { color1, color2, color3, color4, color5 } = this.state.currentPalette
-
+      let colorsElements = this.generateColorsElements()
       return (
         <div className="ColorDisplay">
-          <div style={{backgroundColor: color1}}><p>color1</p></div>
-          <div style={{backgroundColor: color2}}><p>color2</p></div>
-          <div style={{backgroundColor: color3}}><p>color3</p></div>
-          <div style={{backgroundColor: color4}}><p>color4</p></div>
-          <div style={{backgroundColor: color5}}><p>color5</p></div>
+          {colorsElements}
+          <button onClick={this.getNewColors}>Click for more colors</button>
         </div>
       )
     } else {
