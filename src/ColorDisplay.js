@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import randomColor from 'randomcolor';
 import './ColorDisplay.scss'
+import { MdLock, MdLockOpen } from 'react-icons/md'
 
 export default class ColorDisplay extends Component {
   constructor(props) {
@@ -80,9 +81,13 @@ export default class ColorDisplay extends Component {
     let colors = this.state.currentPalette.colors;
 
     let colorsElements = colors.map((color, index) => {
-      return <div key={index} style={{backgroundColor: color.hex}}>
-          <p>color{index}</p>
-          <p onClick={() => this.toggleLock(index)}>lock</p>
+      return <div className="colorBlock">
+        <div className="color" key={index} style={{backgroundColor: color.hex}}>
+          <div className="lock" onClick={() => this.toggleLock(index)}>
+            {color.locked ? <MdLock size={62}/> : <MdLockOpen color="white" size={62}/>}
+            {color.locked ? <p>locked</p> : <></>}
+          </div>
+        </div>
         </div>
     })
     
