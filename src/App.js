@@ -4,6 +4,7 @@ import { getFolders, getPalettes } from "./util/apiCalls";
 import { cleanFolders, cleanPalettes, cleanData } from "./util/cleaners"
 import "./App.scss";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +29,7 @@ class App extends Component {
   }
 
   render = () => {
-    return (
+    return(
       <main className="App">
         <h1>Palette Picker</h1>
         <ColorDisplay palette={this.state.currentPalette} />
