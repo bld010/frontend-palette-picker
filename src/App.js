@@ -23,8 +23,9 @@ class App extends Component {
     this.setState({ currentFolder })
   }
 
-  setCurrentPalette = () => {
-
+  setCurrentPalette = (palette) => {
+    console.log(palette)
+    this.setState({ currentPalette: palette })
   }
 
   componentDidMount = async () => {

@@ -6,9 +6,20 @@ class Palettes extends Component {
     super(props)
   }
 
+  getPalettesList = () => {
+   return this.props.palettes.map(palette => {
+      return <p onClick={() => this.props.setCurrentPalette(palette)}>{palette.name}</p>
+    })
+  }
+
   render = () => {
+
+    let palettesList = this.getPalettesList();
+
     return(
-      <p>This is palettes</p>
+      <div>
+        {palettesList}
+      </div>
     )
   }
 }

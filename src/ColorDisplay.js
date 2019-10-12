@@ -93,6 +93,13 @@ export default class ColorDisplay extends Component {
     return colorsElements;
   }
 
+  componentDidUpdate = (prevProps) => {
+      // Typical usage (don't forget to compare props):
+      if (this.props.palette !== prevProps.palette) {
+        this.setState( { currentPalette: this.props.palette })
+      }
+  }
+
   render = () => {
     if (this.state.currentPalette !== null) {
       let colorsElements = this.generateColorsElements()
