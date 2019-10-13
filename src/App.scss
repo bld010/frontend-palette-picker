@@ -12,7 +12,7 @@
 
   & h1 {
     text-align: left;
-    border-bottom: 1px solid black;
+    // border-bottom: 1px solid black;
     padding-bottom: 10px;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -20,12 +20,27 @@
     font-family: 'Petit Formal Script', cursive;
     text-transform: lowercase;
     color: darkblue;
+    width: 20%;
+    background: -webkit-linear-gradient(right,rgb(33, 255, 33), darkblue, rgb(224, 34, 167));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   & h3 {
+    // font-family: 'Open Sans', sans-serif;
+    margin-top: 0;
+    margin-left: 10px;
     font-family: 'Petit Formal Script', cursive;
+    font-weight: 200;
     text-transform: lowercase;
     margin-bottom: 0px;
+    font-size: 22px;
+
+    & > span {
+      font-weight: bold;
+      text-transform: capitalize;
+    }
   }
 
   & .folders, & .palettes {

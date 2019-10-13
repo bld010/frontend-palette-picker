@@ -9,15 +9,22 @@ export const Folders = props => {
     }
   };
 
-  let foldersList = props.folders.map(folder => {
-    return (
-      <li>
-        <p tabIndex={0} onKeyDown={e => handleEnter(e, folder.id)} onClick={() => props.displayFolderPalettes(folder.id)}>
-          {folder.name}</p>
-        <FaTrash onClick={() => props.deleteFolder(folder)}/>
-      </li>
-    );
-  });
+  let alphabetizedFolders = props.folders.sort((a,b) => {
+    var folderNameA = a.name.toUpperCase();
+    var folderNameB = b.name.toUpperCase();
+
+    if (folderNameA < folderNameB) {
+      return -1
+    } else {
+      return 1
+    }
+  })
+
+  let foldersList = alphabetizedFolders.map(folder => {
+    return <li tabIndex={0} 
+    onKeyDown={(e) => handleEnter(e, folder.id)}
+    onClick={() => props.displayFolderPalettes(folder.id)}>{folder.name}</li>
+  })
 
   return (
     <section className="Folders">

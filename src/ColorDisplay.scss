@@ -1,5 +1,8 @@
 .ColorDisplay {
   
+  // border-top: 1px solid black;
+  margin-top: -70px;
+
   & .colors {
     display: flex;
     flex-direction: row;
@@ -7,13 +10,21 @@
 
     & .colorBlock {
       width: 20%;
-      height: 40vh;
+      height: 50vh;
   
       & .color {
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: space-between;
+
+        & .hexCode {
+          opacity: 0.2;
+          font-family: 'Open Sans', sans-serif;
+          color: black;
+          font-size: 24px;
+          text-transform: uppercase;
+        }
       }
     }
   }
@@ -23,18 +34,19 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    // padding: 20px;
 
     & button {
       margin: 10px;
       height: 40px;
       width: 125px;
-      // padding-right: 20px;
       border-radius: 8px;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
+      font-family: 'Open Sans', sans-serif;
+      text-transform: lowercase;
+      font-size: 15px;
     }
   }
 
@@ -44,17 +56,20 @@
     display: flex;
     flex-direction: row;
     padding: 10px;
-    height: 70px;
+    height: 65px;
+    margin-bottom: 20px;
 
-    & > p {
-      color: black;
-      background-color: white;
-      opacity: 0.5;
-      border-radius: 8px;
-      font-size: 16px;
-      padding: 10px;
-      height: 17px;
-      margin-top: 20px;
-    }
   }
 }
+        .lockedText {
+          color: black;
+          background-color: white;
+          opacity: 0.5;
+          border-radius: 8px;
+          font-size: 14px;
+          text-transform: lowercase;
+          padding: 6px;
+          height: 30px;
+          width: 100px;
+          margin-top: 27px;
+        }
