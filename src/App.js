@@ -56,13 +56,14 @@ class App extends Component {
         <h1>Palette Picker</h1>
         <ColorDisplay palette={this.state.currentPalette} folders={this.state.folders} reAssignData={this.reAssignData}/>
         <section>
-          <div className="Folders">
+          <div className="folders">
             <h3>Folders</h3>
             {this.state.folders && <Folders displayFolderPalettes={this.displayFolderPalettes} folders={this.state.folders} /> }
           </div>
-          <div className="Palettes">
+          <div className="palettes">
           <h3>Palettes</h3>
-            {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} palettes={this.state.currentFolder.palettes} /> }
+            {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} folder={this.state.currentFolder} />}
+            {!this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette}/>}
           </div>
         </section>
       </main>

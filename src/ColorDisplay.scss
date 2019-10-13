@@ -3,10 +3,11 @@
   & .colors {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 
     & .colorBlock {
       width: 20%;
-      height: 50vh;
+      height: 40vh;
   
       & .color {
         height: 100%;
