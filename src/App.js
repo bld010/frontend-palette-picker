@@ -24,7 +24,6 @@ class App extends Component {
   }
 
   setCurrentPalette = (palette) => {
-    console.log(palette)
     this.setState({ currentPalette: palette })
   }
 
@@ -48,9 +47,11 @@ class App extends Component {
         <ColorDisplay palette={this.state.currentPalette} />
         <section>
           <div className="Folders">
+            <h3>Folders</h3>
             {this.state.folders && <Folders displayFolderPalettes={this.displayFolderPalettes} folders={this.state.folders} /> }
           </div>
           <div className="Palettes">
+          <h3>Palettes</h3>
             {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} palettes={this.state.currentFolder.palettes} /> }
           </div>
         </section>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import randomColor from 'randomcolor';
 import './ColorDisplay.scss'
 import { MdLock, MdLockOpen } from 'react-icons/md'
+import { FaSave, FaRandom } from 'react-icons/fa'
 
 export default class ColorDisplay extends Component {
   constructor(props) {
@@ -94,10 +95,9 @@ export default class ColorDisplay extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-      // Typical usage (don't forget to compare props):
-      if (this.props.palette !== prevProps.palette) {
-        this.setState( { currentPalette: this.props.palette })
-      }
+    if (this.props.palette !== prevProps.palette) {
+      this.setState( { currentPalette: this.props.palette })
+    }
   }
 
   render = () => {
@@ -105,8 +105,14 @@ export default class ColorDisplay extends Component {
       let colorsElements = this.generateColorsElements()
       return (
         <div className="ColorDisplay">
-          {colorsElements}
-          <button onClick={this.getNewColors}>Click for more colors</button>
+          <div className="buttons">
+            <button onClick={this.getNewColors}><FaRandom size={25} />Random</button>
+            <button><FaSave size={25} />Save</button>
+          </div>
+          <div className="colors">
+            {colorsElements}
+          </div>
+            
         </div>
       )
     } else {

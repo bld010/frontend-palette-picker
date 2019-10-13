@@ -8,7 +8,7 @@ class Palettes extends Component {
 
   getPalettesList = () => {
    return this.props.palettes.map(palette => {
-      return <p onClick={() => this.props.setCurrentPalette(palette)}>{palette.name}</p>
+      return <li onClick={() => this.props.setCurrentPalette(palette)}>{palette.name}</li>
     })
   }
 
@@ -18,7 +18,9 @@ class Palettes extends Component {
 
     return(
       <div>
-        {palettesList}
+        <ul>
+          {palettesList}
+        </ul>
       </div>
     )
   }

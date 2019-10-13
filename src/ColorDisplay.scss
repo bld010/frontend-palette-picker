@@ -1,19 +1,41 @@
 .ColorDisplay {
-  display: flex;
-  flex-direction: row;
+  
+  & .colors {
+    display: flex;
+    flex-direction: row;
 
-  & .colorBlock {
-    width: 20%;
-    height: 70vh;
-
-    & .color {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+    & .colorBlock {
+      width: 20%;
+      height: 50vh;
+  
+      & .color {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
     }
   }
 
+
+  & .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    // padding: 20px;
+
+    & button {
+      margin: 10px;
+      height: 40px;
+      width: 125px;
+      // padding-right: 20px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
 
   & .lock {
     color: white;
