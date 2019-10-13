@@ -16,7 +16,13 @@ export const cleanPalettes = rawPalettes => {
       name,
       id,
       folder_id,
-      colors: [color1, color2, color3, color4, color5]
+      colors: [
+        { hex: color1, locked: false},
+        { hex: color2, locked: false},
+        { hex: color3, locked: false},
+        { hex: color4, locked: false},
+        { hex: color5, locked: false}
+        ]
     };
 
     return cleanedPalette;

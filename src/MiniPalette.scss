@@ -1,0 +1,17 @@
+.MiniPalette {
+  width: 110%;
+  border-top: 0.5px dotted rgb(202, 202, 202);
+  padding-top: 10px;
+  height: 90px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+
+  & div {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-right: -20px;
+  }
+}

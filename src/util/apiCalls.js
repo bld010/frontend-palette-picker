@@ -1,4 +1,5 @@
-export const getFolders = async url => {
+export const getFolders = async() => {
+  const url = process.env.REACT_APP_BACKEND_URL + '/api/v1/folders/';
   let res = await fetch(url);
   if (!res.ok) {
     throw new Error("There was an error retrieving your folders!");
@@ -8,7 +9,8 @@ export const getFolders = async url => {
   }
 };
 
-export const getPalettes = async url => {
+export const getPalettes = async() => {
+  const url = process.env.REACT_APP_BACKEND_URL + '/api/v1/palettes/';
   let res = await fetch(url);
     if (!res.ok) {
       throw new Error("There was an error retrieving your palettes!");
@@ -20,7 +22,7 @@ export const getPalettes = async url => {
 
 
 export const deleteFolder = async id => {
-  const url = `process.env.REACT_APP_BACKEND_URL + '/api/v1/folders/${id}`;
+  const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/folders/${id}`;
   const options = {
     method: "DELETE",
     headers: { "Content-Type": "application/json" }
@@ -58,6 +60,7 @@ export const deletePalette = async id => {
 };
 
 export const postFolder = async (folderName) => {
+  console.log('fired from post folder')
   const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/folders/`;
   const body = {
       name: folderName
@@ -82,6 +85,7 @@ export const postFolder = async (folderName) => {
 }
 
 export const postPalette = async (colorOne, colorTwo, colorThree, colorFour, colorFive, folderId, paletteName) => {
+  console.log('fired from postPalette', colorOne)
   const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/palettes/`;
   const body = {
       color1: colorOne, 
