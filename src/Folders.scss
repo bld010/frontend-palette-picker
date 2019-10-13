@@ -12,12 +12,20 @@
     padding-top: 20px;
 
     & li {
+      
+      
+
       font-size: 18px;
       list-style-type: none;
       margin: 12px 0 12px 0;
       cursor: pointer;
-      width: 80%;
+      width: 90%;
       font-family: "Open Sans", sans-serif;
+    }
+
+    & li:focus {
+      background-color: rgb(191, 230, 243);
+      outline: none;
     }
   }
 }

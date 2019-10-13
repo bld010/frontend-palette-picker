@@ -83,6 +83,7 @@ export default class ColorDisplay extends Component {
     let colorsElements = colors.map((color, index) => {
       return <div className="colorBlock" key={index}>
         <div className="color"  style={{backgroundColor: color.hex}}>
+          <p>{color.hex}</p>
           <div className="lock" onClick={() => this.toggleLock(index)}>
             {color.locked ? <MdLock size={62}/> : <MdLockOpen color="white" size={62}/>}
             {color.locked ? <p>locked</p> : <></>}

@@ -51,7 +51,7 @@ class App extends Component {
             {this.state.folders && <Folders displayFolderPalettes={this.displayFolderPalettes} folders={this.state.folders} /> }
           </div>
           <div className="palettes">
-          <h3>Palettes</h3>
+          <h3>Palettes {this.state.currentFolder !== null && <>in <span>{this.state.currentFolder.name}</span></>}</h3>
             {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} folder={this.state.currentFolder} />}
             {!this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette}/>}
           </div>
