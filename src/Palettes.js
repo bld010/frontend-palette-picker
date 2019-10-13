@@ -7,22 +7,36 @@ class Palettes extends Component {
   }
 
   getPalettesList = () => {
-   return this.props.palettes.map(palette => {
+   return this.props.folder.palettes.map(palette => {
       return <li onClick={() => this.props.setCurrentPalette(palette)}>{palette.name}</li>
     })
   }
 
   render = () => {
+    console.log(this.props)
 
-    let palettesList = this.getPalettesList();
+    if (this.props.folder) {
+      let { palettes } = this.props.folder
 
-    return(
-      <div>
+      return(
+        <div className="Palettes">
         <ul>
-          {palettesList}
+          {!palettes.length && <li>This folder has no palettes.</li>}
+          {palettes.length > 0 && this.getPalettesList()}
         </ul>
       </div>
-    )
+      )
+    } else {
+
+      return(
+        <div className="Palettes">
+          <ul>
+            <li>Select a folder to see the palettes.</li>
+          </ul>
+        </div>
+      )
+    }
+
   }
 }
 

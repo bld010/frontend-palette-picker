@@ -1,0 +1,14 @@
+.Palettes {
+  & ul {
+    overflow: scroll;
+    width: 90%;
+    height: 28vh;
+    box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+    padding-top: 20px;
+  
+    & li {
+      list-style-type: none;
+      margin: 10px 0 10px 0;
+    }
+  }
+}

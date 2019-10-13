@@ -13,10 +13,29 @@
     margin-bottom: 0px;
     margin-top: 0px;
     padding: 20px;
+    font-family: 'Petit Formal Script', cursive;
+    text-transform: lowercase;
+    color: darkblue;
   }
 
-  & .Folders {
-    width: 400px;
-    height: 300px;
+  & h3 {
+    font-family: 'Petit Formal Script', cursive;
+    text-transform: lowercase;
+    margin-bottom: 0px;
+  }
+
+  & .folders, & .palettes {
+    padding: 20px;
+    text-align: left;
+    height: 35vh;
+  }
+
+  & .folders {
+    width: 30%;
+    min-width: 300px;
+  }
+
+  & .palettes {
+    width: 70%;
   }
 }
