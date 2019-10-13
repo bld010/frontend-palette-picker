@@ -6,9 +6,18 @@ class Palettes extends Component {
     super(props)
   }
 
+  handleEnter = (e, palette) => {
+    if (e.keyCode == 13) {
+      this.props.setCurrentPalette(palette)
+    }
+  }
+
   getPalettesList = () => {
    return this.props.folder.palettes.map(palette => {
-      return <li onClick={() => this.props.setCurrentPalette(palette)}>{palette.name}</li>
+      return <li 
+      tabIndex={0} 
+      onKeyDown={(e) => this.handleEnter(e, palette)}
+      onClick={() => this.props.setCurrentPalette(palette)}>{palette.name}</li>
     })
   }
 
