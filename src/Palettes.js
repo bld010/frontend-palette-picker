@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Palettes.scss';
+import MiniPalette from './MiniPalette';
 
 class Palettes extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Palettes extends Component {
       return <li 
       tabIndex={0} 
       onKeyDown={(e) => this.handleEnter(e, palette)}
-      onClick={() => this.props.setCurrentPalette(palette)}>{palette.name}</li>
+      onClick={() => this.props.setCurrentPalette(palette)}>{palette.name} <MiniPalette palette={palette}/></li>
     })
   }
 

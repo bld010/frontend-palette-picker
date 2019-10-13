@@ -24,3 +24,5 @@ export const Folders = (props) => {
 
   )
 }
+
+//will have to change to component, and use component did update to rerender list of available folders
