@@ -1,19 +1,54 @@
 .ColorDisplay {
-  display: flex;
-  flex-direction: row;
+  
+  // border-top: 1px solid black;
+  margin-top: -70px;
 
-  & .colorBlock {
-    width: 20%;
-    height: 70vh;
+  & .colors {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
-    & .color {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+    & .colorBlock {
+      width: 20%;
+      height: 50vh;
+  
+      & .color {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & .hexCode {
+          opacity: 0.2;
+          font-family: 'Open Sans', sans-serif;
+          color: black;
+          font-size: 24px;
+          text-transform: uppercase;
+        }
+      }
     }
   }
 
+
+  & .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    & button {
+      margin: 10px;
+      height: 40px;
+      width: 125px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      font-family: 'Open Sans', sans-serif;
+      text-transform: lowercase;
+      font-size: 15px;
+    }
+  }
 
   & .lock {
     color: white;
@@ -21,17 +56,20 @@
     display: flex;
     flex-direction: row;
     padding: 10px;
-    height: 70px;
+    height: 65px;
+    margin-bottom: 20px;
 
-    & > p {
-      color: black;
-      background-color: white;
-      opacity: 0.5;
-      border-radius: 8px;
-      font-size: 16px;
-      padding: 10px;
-      height: 17px;
-      margin-top: 20px;
-    }
   }
 }
+        .lockedText {
+          color: black;
+          background-color: white;
+          opacity: 0.5;
+          border-radius: 8px;
+          font-size: 14px;
+          text-transform: lowercase;
+          padding: 6px;
+          height: 30px;
+          width: 100px;
+          margin-top: 27px;
+        }
