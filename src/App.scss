@@ -28,13 +28,18 @@
   }
 
   & h3 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    // text-transform: lowercase;
+    // font-family: 'Open Sans', sans-serif;
+    margin-top: 0;
+    margin-left: 10px;
+    font-family: 'Petit Formal Script', cursive;
+    font-weight: 200;
+    text-transform: lowercase;
     margin-bottom: 0px;
+    font-size: 22px;
 
     & > span {
       font-weight: bold;
+      text-transform: capitalize;
     }
   }
 
