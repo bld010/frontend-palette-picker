@@ -1,28 +1,28 @@
-import React from 'react';
-import './Folders.scss'
+import React from "react";
+import { FaTrash } from "react-icons/fa";
+import "./Folders.scss";
 
-export const Folders = (props) => {
-
+export const Folders = props => {
   const handleEnter = (e, id) => {
     if (e.keyCode == 13) {
-      props.displayFolderPalettes(id)
+      props.displayFolderPalettes(id);
     }
-  }
+  };
 
   let foldersList = props.folders.map(folder => {
-    return <li tabIndex={0} 
-    onKeyDown={(e) => handleEnter(e, folder.id)}
-    onClick={() => props.displayFolderPalettes(folder.id)}>{folder.name}</li>
-  })
+    return (
+      <li>
+        <p tabIndex={0} onKeyDown={e => handleEnter(e, folder.id)} onClick={() => props.displayFolderPalettes(folder.id)}>
+          {folder.name}</p>
+        <FaTrash onClick={() => props.deleteFolder(folder)}/>
+      </li>
+    );
+  });
 
-  return(
+  return (
     <section className="Folders">
-      <ul>
-        {foldersList}
-      </ul>
+      <ul>{foldersList}</ul>
     </section>
+  );
+};
 
-  )
-}
-
-//will have to change to component, and use component did update to rerender list of available folders

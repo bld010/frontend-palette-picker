@@ -106,7 +106,9 @@ export default class ColorDisplay extends Component {
     let colorFour = this.state.currentPalette.colors[3].hex
     let colorFive = this.state.currentPalette.colors[4].hex
     await postPalette(colorOne, colorTwo, colorThree, colorFour, colorFive, folder.id, paletteName)
-    this.props.reAssignData()
+    await this.props.reAssignData()
+    this.props.displayFolderPalettes(folder.id)
+    // this.props.palette()
     this.setState({showModal: false})
   }
 

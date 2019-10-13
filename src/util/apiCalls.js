@@ -22,7 +22,7 @@ export const getPalettes = async() => {
 
 
 export const deleteFolder = async id => {
-  const url = `process.env.REACT_APP_BACKEND_URL + '/api/v1/folders/${id}`;
+  const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/folders/${id}`;
   const options = {
     method: "DELETE",
     headers: { "Content-Type": "application/json" }

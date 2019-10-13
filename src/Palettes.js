@@ -23,8 +23,6 @@ class Palettes extends Component {
   }
 
   render = () => {
-    console.log(this.props)
-
     if (this.props.folder) {
       let { palettes } = this.props.folder
 
