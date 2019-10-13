@@ -27,11 +27,21 @@ class App extends Component {
     this.setState({ currentPalette: palette })
   }
 
+  reAssignData = async() => {
+    const fetchedPalettes = await getPalettes()
+    const cleanedPalettes = await cleanPalettes(fetchedPalettes)
+    const fetchedFolders = await getFolders();
+    const cleanedFolders = await cleanFolders(fetchedFolders)
+    const cleanedData = await cleanData(cleanedFolders, cleanedPalettes)
+    await this.setState({ folders: cleanedData });
+  }
+
+  
   componentDidMount = async () => {
     try {
-      const fetchedPalettes = await getPalettes(process.env.REACT_APP_BACKEND_URL + '/api/v1/palettes')
+      const fetchedPalettes = await getPalettes()
       const cleanedPalettes = await cleanPalettes(fetchedPalettes)
-      const fetchedFolders = await getFolders(process.env.REACT_APP_BACKEND_URL + '/api/v1/folders');
+      const fetchedFolders = await getFolders();
       const cleanedFolders = await cleanFolders(fetchedFolders)
       const cleanedData = await cleanData(cleanedFolders, cleanedPalettes)
       await this.setState({ folders: cleanedData });
@@ -44,7 +54,7 @@ class App extends Component {
     return(
       <main className="App">
         <h1>Palette Picker</h1>
-        <ColorDisplay palette={this.state.currentPalette} />
+        <ColorDisplay palette={this.state.currentPalette} folders={this.state.folders} reAssignData={this.reAssignData}/>
         <section>
           <div className="Folders">
             <h3>Folders</h3>
