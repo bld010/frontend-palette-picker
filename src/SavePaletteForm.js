@@ -9,7 +9,8 @@ export class SavePaletteForm extends Component {
           paletteName: '',
           folderName: '',
           reload: false,
-          folders: this.props.folders || null
+          folders: this.props.folders || null,
+          error: ''
       };
     }
 
@@ -20,10 +21,17 @@ export class SavePaletteForm extends Component {
 
     createNewFolder = async e => {
         e.preventDefault()
-        await this.setState({currentFolder: this.state.folderName})
-        await postFolder(this.state.folderName)
-        let allFolders = await getFolders()
-        await this.setState({folders: allFolders})
+        const sameName = this.state.folders.find(folder => folder.name === this.state.folderName)
+        if(sameName){
+            console.log(sameName)
+            this.setState({error: 'This folder already exists! Please choose a new name!'})
+        } else {
+            await this.setState({currentFolder: this.state.folderName})
+            await postFolder(this.state.folderName)
+            let allFolders = await getFolders()
+            await this.setState({folders: allFolders})
+            await this.setState({error: ''})
+        }
     }
 
     setCurrentFolderByClick = (e, folder) => {
@@ -42,6 +50,10 @@ export class SavePaletteForm extends Component {
         })
     }
 
+    // handleSave = () => {
+    //     const sameName = this.state.folders.find(folder => folder.name === this.statefolderName)
+    // }
+
     componentDidUpdate = (prevProps) => {
         if (this.props.folders !== prevProps.folders) {
           this.setState( { reload: true })
@@ -49,6 +61,7 @@ export class SavePaletteForm extends Component {
       }
 
     render() {
+        console.log(this.state.folders)
         return (
         <form>
             <h1>Save Your Palette</h1>
@@ -61,6 +74,7 @@ export class SavePaletteForm extends Component {
                 <h1>Create a New Folder</h1>
                 <input type='text' placeholder='Enter a name for your folder!' name='folderName' value={this.state.folderName} onChange={e => this.handleChangeOfInput(e)}/>
                 <button onClick={this.createNewFolder}>Create Folder</button>
+                {this.state.error && <p>{this.state.error}</p>}
             </div>
             <button onClick={(e) => this.props.savePalette(e,this.state.currentFolder, this.state.paletteName)}>Submit!</button>
         </form>
