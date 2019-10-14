@@ -98,6 +98,10 @@ export default class ColorDisplay extends Component {
     this.setState({showModal: true})
   }
 
+  hideModal = () => {
+    this.setState({showModal: false})
+  }
+
   // (colorOne, colorTwo, colorThree, colorFour, colorFive, folderId, paletteName)
   savePalette = async (e, folder, paletteName) => {
     e.preventDefault()
@@ -127,9 +131,12 @@ export default class ColorDisplay extends Component {
       let colorsElements = this.generateColorsElements()
       return (
         <div className="ColorDisplay">
-          <ReactModal isOpen={this.state.showModal}>
-            <SavePaletteForm savePalette={this.savePalette} folders={this.props.folders} />
-          </ReactModal>
+
+          <div className="modal"> 
+            <ReactModal isOpen={this.state.showModal} className="ReactModal">
+              <SavePaletteForm hideModal={this.hideModal} palette={this.state.currentPalette} savePalette={this.savePalette} folders={this.props.folders} />
+            </ReactModal>
+          </div>
           <div className="buttons">
             <button onClick={this.getNewColors}><FaRandom size={25} />Random</button>
             <button onClick={this.displayModal}><FaSave size={25} />Save</button>
