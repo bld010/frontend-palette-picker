@@ -6,7 +6,6 @@ import { getFolders, getPalettes, deleteFolder, deletePalette } from "./util/api
 import { cleanFolders, cleanPalettes, cleanData } from "./util/cleaners"
 import "./App.scss";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +37,17 @@ class App extends Component {
 
   deleteFolder = async (folder) => {
     await deleteFolder(folder.id)
-    this.reAssignData()
+    await this.reAssignData()
+    await this.setState({currentFolder: null})
+  }
+
+  deletePalette = async(palette) => {
+    await deletePalette(palette.id)
+    await this.reAssignData()
+    const correctPalettes = this.state.currentFolder.palettes.filter(pal => pal.id !== palette.id)
+    const correctFolder = this.state.currentFolder
+    correctFolder.palettes = correctPalettes
+    this.setState({currentFolder: correctFolder})
   }
   
   componentDidMount = async () => {
@@ -66,7 +75,7 @@ class App extends Component {
           </div>
           <div className="palettes">
           <h3>Palettes {this.state.currentFolder !== null && <>in <span>{this.state.currentFolder.name}</span></>}</h3>
-            {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} folder={this.state.currentFolder} />}
+            {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} folder={this.state.currentFolder} deletePalette={this.deletePalette}/>}
             {!this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette}/>}
           </div>
         </section>
