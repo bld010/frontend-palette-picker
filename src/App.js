@@ -43,6 +43,7 @@ class App extends Component {
   }
 
   deletePalette = async(palette) => {
+    console.log('app', palette)
     await deletePalette(palette.id)
     await this.reAssignData()
     const correctPalettes = this.state.currentFolder.palettes.filter(pal => pal.id !== palette.id)
@@ -65,8 +66,6 @@ class App extends Component {
   }
 
   render = () => {
-    console.log('folders', this.state.folders)
-    console.log('currentFolder', this.state.currentFolder)
     return(
       <main className="App">
         <h1>Palette Picker</h1>
