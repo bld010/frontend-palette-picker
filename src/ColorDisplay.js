@@ -143,8 +143,7 @@ export default class ColorDisplay extends Component {
           </div>
           <div className="colors">
             {colorsElements}
-          </div>
-            
+          </div> 
         </div>
       )
     } else {

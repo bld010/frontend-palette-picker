@@ -44,7 +44,7 @@
   
   & .folderList {
     box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
-    height: 300px;
+    height: 200px;
     width: 200px;
     overflow: scroll;
     margin: 0;
@@ -107,5 +107,8 @@
         background-color: lightblue;
       }
     }
+  }
+  .error {
+    color: red
   }
 }

@@ -20,6 +20,18 @@
       cursor: pointer;
       margin: 15px;
       font-family: "Open Sans", sans-serif;
+      
+      & .palette-div {
+        width: 100%;
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & .trash {
+          opacity: 0.3;
+        }
+      }
     }
   }
+  
 }

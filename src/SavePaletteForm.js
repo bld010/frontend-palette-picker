@@ -95,7 +95,7 @@ export class SavePaletteForm extends Component {
                 <button onClick={(e) => this.handleSave(e)}>Submit!</button>
                 <button onClick={this.props.hideModal}>Cancel</button>
             </div>
-            {this.state.error && <p>{this.state.error}</p>}
+            {this.state.error && <p className="error">{this.state.error}</p>}
         </form>
         )
     }

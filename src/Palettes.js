@@ -32,11 +32,14 @@ class Palettes extends Component {
   getPalettesList = () => {
    return this.props.folder.palettes.map(palette => {
       return <li key={palette.id}>
-
-        <p tabIndex={0} onKeyDown={(e) => this.handleSetPaletteEnter(e, palette)} onClick={() => this.props.setCurrentPalette(palette)}>
-          {palette.name}
-        </p> 
-        <FaTrash tabIndex={0} onKeyDown={(e) => this.handleDeleteEnter(e, palette)} onClick={() => this.props.deletePalette(palette)}/>
+        <div class="palette-div">
+          <p tabIndex={0} onKeyDown={(e) => this.handleSetPaletteEnter(e, palette)} onClick={() => this.props.setCurrentPalette(palette)}>
+            {palette.name}
+          </p>
+          <div className="trash"> 
+            <FaTrash tabIndex={0} onKeyDown={(e) => this.handleDeleteEnter(e, palette)} onClick={() => this.props.deletePalette(palette)}/>
+          </div>
+        </div>
         <MiniPalette tabIndex={0} onKeyDown={(e) => this.handleEnter(e, palette)} setCurrentPalette={this.props.setCurrentPalette} palette={palette}/>
       </li>
     })
