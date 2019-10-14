@@ -37,7 +37,13 @@ class App extends Component {
 
   deleteFolder = async (folder) => {
     await deleteFolder(folder.id)
-    this.reAssignData()
+    await this.reAssignData()
+  }
+
+  deletePalette = async(palette) => {
+    await deletePalette(palette.id)
+    await console.log(this.state.folders)
+    await this.reAssignData()
   }
   
   componentDidMount = async () => {
@@ -54,6 +60,7 @@ class App extends Component {
   }
 
   render = () => {
+    console.log('brianna', console.log(this.state.currentFolder))
     return(
       <main className="App">
         <h1>Palette Picker</h1>
@@ -65,7 +72,7 @@ class App extends Component {
           </div>
           <div className="palettes">
           <h3>Palettes {this.state.currentFolder !== null && <>in <span>{this.state.currentFolder.name}</span></>}</h3>
-            {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} folder={this.state.currentFolder} />}
+            {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} folder={this.state.currentFolder} deletePalette={this.deletePalette}/>}
             {!this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette}/>}
           </div>
         </section>

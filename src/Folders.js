@@ -21,10 +21,14 @@ export const Folders = props => {
   })
 
   let foldersList = alphabetizedFolders.map(folder => {
-    return <li tabIndex={0} 
-    onKeyDown={(e) => handleEnter(e, folder.id)}
-    onClick={() => props.displayFolderPalettes(folder.id)}>{folder.name}</li>
-  })
+    return (
+      <li>
+        <p tabIndex={0} onKeyDown={e => handleEnter(e, folder.id)} onClick={() => props.displayFolderPalettes(folder.id)}>
+          {folder.name}</p>
+        <FaTrash onClick={() => props.deleteFolder(folder)}/>
+      </li>
+    );
+  });
 
   return (
     <section className="Folders">
