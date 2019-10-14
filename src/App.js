@@ -5,7 +5,6 @@ import Palettes from './Palettes';
 import { getFolders, getPalettes, deleteFolder, deletePalette } from "./util/apiCalls";
 import { cleanFolders, cleanPalettes, cleanData } from "./util/cleaners"
 import "./App.scss";
-import { thisExpression } from "@babel/types";
 
 class App extends Component {
   constructor(props) {
