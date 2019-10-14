@@ -5,6 +5,7 @@ import Palettes from './Palettes';
 import { getFolders, getPalettes, deleteFolder, deletePalette } from "./util/apiCalls";
 import { cleanFolders, cleanPalettes, cleanData } from "./util/cleaners"
 import "./App.scss";
+import { thisExpression } from "@babel/types";
 
 class App extends Component {
   constructor(props) {
@@ -38,12 +39,16 @@ class App extends Component {
   deleteFolder = async (folder) => {
     await deleteFolder(folder.id)
     await this.reAssignData()
+    await this.setState({currentFolder: null})
   }
 
   deletePalette = async(palette) => {
     await deletePalette(palette.id)
-    await console.log(this.state.folders)
     await this.reAssignData()
+    const correctPalettes = this.state.currentFolder.palettes.filter(pal => pal.id !== palette.id)
+    const correctFolder = this.state.currentFolder
+    correctFolder.palettes = correctPalettes
+    this.setState({currentFolder: correctFolder})
   }
   
   componentDidMount = async () => {
@@ -60,7 +65,8 @@ class App extends Component {
   }
 
   render = () => {
-    console.log('brianna', console.log(this.state.currentFolder))
+    console.log('folders', this.state.folders)
+    console.log('currentFolder', this.state.currentFolder)
     return(
       <main className="App">
         <h1>Palette Picker</h1>
