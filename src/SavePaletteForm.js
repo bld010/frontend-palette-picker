@@ -11,7 +11,8 @@ export class SavePaletteForm extends Component {
           paletteName: '',
           folderName: '',
           reload: false,
-          folders: this.props.folders || null
+          folders: this.props.folders || null,
+          error: ''
       };
     }
 
@@ -22,10 +23,17 @@ export class SavePaletteForm extends Component {
 
     createNewFolder = async e => {
         e.preventDefault()
-        await this.setState({currentFolder: this.state.folderName})
-        await postFolder(this.state.folderName)
-        let allFolders = await getFolders()
-        await this.setState({folders: allFolders})
+        const sameName = this.state.folders.find(folder => folder.name === this.state.folderName)
+        if(sameName){
+            this.setState({error: 'This folder already exists! Please choose a new name!'})
+        } else {
+            await postFolder(this.state.folderName)
+            let allFolders = await getFolders()
+            await this.setState({folders: allFolders})
+            const correctFolder = this.state.folders.find(folder => folder.name === this.state.folderName)
+            await this.setState({currentFolder: correctFolder})
+            await this.setState({error: ''})
+        }
     }
 
     setCurrentFolderByClick = (e, folder) => {
@@ -42,6 +50,14 @@ export class SavePaletteForm extends Component {
         })
     }
 
+    handleSave = (e) => {
+        e.preventDefault()
+        if(this.state.currentFolder && this.state.paletteName){
+            this.props.savePalette(e,this.state.currentFolder, this.state.paletteName)
+        } else {
+            this.setState({error: 'Please enter a name for a palette and select a folder!'})
+        }
+    }
 
     componentDidUpdate = (prevProps) => {
         if (this.props.folders !== prevProps.folders) {
@@ -76,9 +92,10 @@ export class SavePaletteForm extends Component {
                 </div>
             </section>
             <div className="bottom-buttons">
-                <button onClick={(e) => this.props.savePalette(e,this.state.currentFolder, this.state.paletteName)}>Submit!</button>
+                <button onClick={(e) => this.handleSave(e)}>Submit!</button>
                 <button onClick={this.props.hideModal}>Cancel</button>
             </div>
+            {this.state.error && <p>{this.state.error}</p>}
         </form>
         )
     }

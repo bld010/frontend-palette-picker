@@ -11,9 +11,15 @@ class Palettes extends Component {
     }
   }
 
-  handleEnter = (e, palette) => {
-    if (e.keyCode == 13) {
+  handleSetPaletteEnter = (e, palette) => {
+    if (e.keyCode === 13) {
       this.props.setCurrentPalette(palette)
+    }
+  }
+
+  handleDeleteEnter = (e, palette) => {
+    if (e.keyCode === 13){
+      this.props.deletePalette(palette)
     }
   }
 
@@ -25,12 +31,12 @@ class Palettes extends Component {
 
   getPalettesList = () => {
    return this.props.folder.palettes.map(palette => {
-      return <li>
+      return <li key={palette.id}>
 
-        <p tabIndex={0} onKeyDown={(e) => this.handleEnter(e, palette)} onClick={() => this.props.setCurrentPalette(palette)}>
+        <p tabIndex={0} onKeyDown={(e) => this.handleSetPaletteEnter(e, palette)} onClick={() => this.props.setCurrentPalette(palette)}>
           {palette.name}
         </p> 
-        <FaTrash tabIndex={0} onClick={() => this.props.deletePalette(palette)}/>
+        <FaTrash tabIndex={0} onKeyDown={(e) => this.handleDeleteEnter(e, palette)} onClick={() => this.props.deletePalette(palette)}/>
         <MiniPalette tabIndex={0} onKeyDown={(e) => this.handleEnter(e, palette)} setCurrentPalette={this.props.setCurrentPalette} palette={palette}/>
       </li>
     })

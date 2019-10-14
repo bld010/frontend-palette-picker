@@ -5,7 +5,6 @@ import Palettes from './Palettes';
 import { getFolders, getPalettes, deleteFolder, deletePalette } from "./util/apiCalls";
 import { cleanFolders, cleanPalettes, cleanData } from "./util/cleaners"
 import "./App.scss";
-import { thisExpression } from "@babel/types";
 
 class App extends Component {
   constructor(props) {
@@ -65,8 +64,6 @@ class App extends Component {
   }
 
   render = () => {
-    console.log('folders', this.state.folders)
-    console.log('currentFolder', this.state.currentFolder)
     return(
       <main className="App">
         <h1>Palette Picker</h1>
