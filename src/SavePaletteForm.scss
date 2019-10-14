@@ -1,0 +1,111 @@
+.SavePaletteForm {
+  height: auto;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  padding: 20px;
+
+  & .miniPalette {
+    margin-left: 30px;
+    width: 50%;
+  }
+
+  & h2 {
+    text-align: center;
+    border-bottom: 1px dotted lightgrey;
+    width: 90%;
+    font-family: 'Petit Formal Script', cursive;
+    text-transform: lowercase;
+  }
+
+
+
+  & input:nth-of-type(1) {
+    height: 40px;
+    font-size: 30px;
+    width: 80%;
+  }
+  
+  & section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px;
+    
+    & div {
+      margin: 40px;
+    }
+  }
+  
+  & .folderList {
+    box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+    height: 300px;
+    width: 200px;
+    overflow: scroll;
+    margin: 0;
+    padding: 10px;
+
+    & p {
+      border-bottom: 1px dotted lightgrey;
+      padding-bottom: 10px;
+      cursor: pointer;
+    }
+  }
+
+  & .selectFolder {
+    border-right: 1px dotted lightgrey;
+    padding-right: 20px;
+    width: 50%;
+  }
+
+  & .createFolder, .selectFolder {
+    margin: 10px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+
+
+    & input {
+      font-size: 12px;
+      width: 200px;
+      height: 40px;
+    }
+
+    & button {
+      margin: 10px;
+      border-radius: 8px;
+      font-family: 'Open Sans', sans-serif;
+    }
+  }
+
+  & button {
+    width: 100px;
+  }
+
+  & .active {
+    background-color: lightblue;
+  }
+
+  & .bottom-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: center;
+
+    & button {
+      margin: 0 20px 0 20px;
+      border-radius: 8px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+
+      &:nth-of-type(1) {
+        background-color: lightblue;
+      }
+    }
+  }
+}
