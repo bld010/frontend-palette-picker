@@ -138,8 +138,8 @@ export default class ColorDisplay extends Component {
             </ReactModal>
           </div>
           <div className="buttons">
-            <button onClick={this.getNewColors}><FaRandom size={25} />Random</button>
-            <button onClick={this.displayModal}><FaSave size={25} />Save</button>
+            <button className="random-button" onClick={this.getNewColors}><FaRandom size={25} />Random</button>
+            <button className="save-button" onClick={this.displayModal}><FaSave size={25} />Save</button>
           </div>
           <div className="colors">
             {colorsElements}
