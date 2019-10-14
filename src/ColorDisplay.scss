@@ -34,6 +34,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin: 10px 30px 30px 30px;;
 
     & button {
       margin: 10px;
@@ -82,4 +83,42 @@
   height: 30px;
   width: 100px;
   margin-top: 27px;
+}
+
+.random-button {
+  animation: wiggle 8s linear 3;
+}
+
+
+@keyframes wiggle {
+  0%, 5% {
+    transform: rotateZ(0)
+  }
+  7% {
+    transform: rotateZ(-10deg);
+  }
+
+  9% {
+    transform: rotateZ(10deg);
+  }
+
+  11% {
+    transform: rotateZ(0deg);
+  }
+
+  13% {
+    transform: rotateZ(-10deg);
+  }
+
+  15% {
+    transform: rotateZ(10deg);
+  }
+
+  17% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(0)
+  }
 }
