@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   deletePalette = async(palette) => {
-    console.log('app', palette)
     await deletePalette(palette.id)
     await this.reAssignData()
     const correctPalettes = this.state.currentFolder.palettes.filter(pal => pal.id !== palette.id)

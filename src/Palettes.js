@@ -18,9 +18,7 @@ class Palettes extends Component {
   }
 
   handleDeleteEnter = (e, palette) => {
-    console.log('e', e.keyCode)
     if (e.keyCode == 13){
-      console.log('in')
       this.props.deletePalette(palette)
     }
   }

@@ -3,11 +3,18 @@ import { FaTrash } from "react-icons/fa";
 import "./Folders.scss";
 
 export const Folders = props => {
-  const handleEnter = (e, id) => {
+
+  const handleDisplayFolderEnter = (e, id) => {
     if (e.keyCode == 13) {
       props.displayFolderPalettes(id);
     }
   };
+
+  const handleDeleteFolderEnter = (e, folder) => {
+    if (e.keyCode == 13){
+      props.deleteFolder(folder)
+    }
+  }
 
   let alphabetizedFolders = props.folders.sort((a,b) => {
     var folderNameA = a.name.toUpperCase();
@@ -23,9 +30,9 @@ export const Folders = props => {
   let foldersList = alphabetizedFolders.map(folder => {
     return (
       <li>
-        <p tabIndex={0} onKeyDown={e => handleEnter(e, folder.id)} onClick={() => props.displayFolderPalettes(folder.id)}>
+        <p tabIndex={0} onKeyDown={e => handleDisplayFolderEnter(e, folder.id)} onClick={() => props.displayFolderPalettes(folder.id)}>
           {folder.name}</p>
-        <FaTrash onClick={() => props.deleteFolder(folder)}/>
+        <FaTrash tabIndex={0} onKeyDown={e=> handleDeleteFolderEnter(e, folder)} onClick={() => props.deleteFolder(folder)}/>
       </li>
     );
   });
