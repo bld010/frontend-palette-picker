@@ -1,45 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App matches the snapshot 1`] = `
-<main
-  className="App"
->
-  <h1>
-    Palette Picker
-  </h1>
-  <ColorDisplay
-    displayFolderPalettes={[Function]}
-    folders={Array []}
-    palette={null}
-    reAssignData={[Function]}
-  />
-  <section>
-    <div
-      className="folders"
-    >
-      <h3>
-        Folders
-      </h3>
-      <Folders
-        deleteFolder={[Function]}
-        displayFolderPalettes={[Function]}
-        folders={Array []}
-      />
-    </div>
-    <div
-      className="palettes"
-    >
-      <h3>
-        Palettes 
-      </h3>
-      <Palettes
-        setCurrentPalette={[Function]}
-      />
-    </div>
-  </section>
-</main>
-`;
-
 exports[`App should match the snapshot 1`] = `
 <main
   className="App"

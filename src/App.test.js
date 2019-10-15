@@ -7,15 +7,80 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
 describe('App', () => {
+
+  let wrapper;
+
+  let mockPalette1 = {
+    folder_id: 1,
+    id: 22,
+    colors: [],
+    name: "Mock Palette 1"
+  }
+
+  let mockPalette2 = {
+    folder_id: 1,
+    id: 23,
+    colors: [],
+    name: "Mock Palette 2"
+  }
+
+  let mockPalette3 = {
+    folder_id: 2,
+    id: 24,
+    colors: [],
+    name: "Mock Palette 3"
+  }
+
+  let mockPalette4 = {
+    folder_id: 2,
+    id: 24,
+    colors: [],
+    name: "Mock Palette 3"
+  }
+
+  let mockFolders = [
+    { name: "Folder 1", 
+      id: 1,
+      palettes: [
+        mockPalette1,
+        mockPalette2
+      ], 
+    }, 
+    { name: "Folder 2", 
+      id: 2,
+      palettes: [
+        mockPalette3,
+        mockPalette4
+      ], 
+    }, 
+    
+  ]
+
+  beforeEach(() => {
+    wrapper = shallow(<App />)
+  })
   it('should match the snapshot', () => {
-    let wrapper = shallow(<App />)
-  
     expect(wrapper).toMatchSnapshot();
   });
 
   describe('displayFolderPalettes', () => {
-    it('should set state with correct folder based on id', () => {
+    it('should set state with correct folder based on id', async () => {
+      
+      await wrapper.instance().setState({folders: mockFolders})
 
+      wrapper.instance().displayFolderPalettes(1)
+
+      let expected = { 
+        name: "Folder 1", 
+        id: 1,
+        palettes: [
+          mockPalette1,
+          mockPalette2
+        ], 
+      }
+      
+      expect(wrapper.state().currentFolder).toEqual(expected);
+      
     })
   })
 
