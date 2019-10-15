@@ -27,12 +27,16 @@ class App extends Component {
   }
 
   reAssignData = async() => {
-    const fetchedPalettes = await getPalettes()
-    const cleanedPalettes = await cleanPalettes(fetchedPalettes)
-    const fetchedFolders = await getFolders();
-    const cleanedFolders = await cleanFolders(fetchedFolders)
-    const cleanedData = await cleanData(cleanedFolders, cleanedPalettes)
-    await this.setState({ folders: cleanedData });
+    try {
+      const fetchedPalettes = await getPalettes();
+      const cleanedPalettes = await cleanPalettes(fetchedPalettes);
+      const fetchedFolders = await getFolders();
+      const cleanedFolders = await cleanFolders(fetchedFolders);
+      const cleanedData = await cleanData(cleanedFolders, cleanedPalettes);
+      await this.setState({ folders: cleanedData });
+    } catch (error) {
+      await this.setState({ error })
+    }
   }
 
   deleteFolder = async (folder) => {
@@ -41,13 +45,17 @@ class App extends Component {
     await this.setState({currentFolder: null})
   }
 
-  deletePalette = async(palette) => {
-    await deletePalette(palette.id)
-    await this.reAssignData()
-    const correctPalettes = this.state.currentFolder.palettes.filter(pal => pal.id !== palette.id)
-    const correctFolder = this.state.currentFolder
-    correctFolder.palettes = correctPalettes
-    this.setState({currentFolder: correctFolder})
+  deletePaletteAndFetch = async(palette) => {
+    try {
+      await deletePalette(palette.id)
+      await this.reAssignData()
+
+      let updatedCurrentFolder = await this.state.folders.find(folder => folder.id === palette.folder_id)
+
+      this.setState({currentFolder: updatedCurrentFolder})
+    } catch (error) {
+      this.setState({ error })
+    } 
   }
   
   componentDidMount = async () => {
@@ -70,7 +78,7 @@ class App extends Component {
           </div>
           <div className="palettes">
           <h3>Palettes {this.state.currentFolder !== null && <>in <span>{this.state.currentFolder.name}</span></>}</h3>
-            {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} folder={this.state.currentFolder} deletePalette={this.deletePalette}/>}
+            {this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette} folder={this.state.currentFolder} deletePalette={this.deletePaletteAndFetch}/>}
             {!this.state.currentFolder && <Palettes setCurrentPalette={this.setCurrentPalette}/>}
           </div>
         </section>

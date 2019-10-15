@@ -45,7 +45,7 @@ export class SavePaletteForm extends Component {
         return this.state.folders.map(folder => {
             return (
                 <p className={this.state.currentFolder === folder ? 'active' : ' '}
-                    onClick={(e) => this.setState({currentFolder: folder})}>{folder.name}</p> 
+                    onClick={() => this.setState({currentFolder: folder})}>{folder.name}</p> 
             )
         })
     }
