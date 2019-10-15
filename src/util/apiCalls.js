@@ -57,7 +57,6 @@ export const deletePalette = async id => {
 };
 
 export const postFolder = async folderName => {
-  console.log("fired from post folder");
   const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/folders/`;
   const body = {
     name: folderName
@@ -71,8 +70,7 @@ export const postFolder = async folderName => {
   try {
     const res = await fetch(url, options);
     if (!res.ok) {
-      const error = await res.json();
-      throw new Error(error);
+      throw new Error("There was an error posting this folder!");
     }
     const newFolder = await res.json();
     return newFolder;
@@ -90,7 +88,6 @@ export const postPalette = async (
   folderId,
   paletteName
 ) => {
-  console.log("fired from postPalette", colorOne);
   const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/palettes/`;
   const body = {
     color1: colorOne,
@@ -110,8 +107,7 @@ export const postPalette = async (
   try {
     const res = await fetch(url, options);
     if (!res.ok) {
-      const error = await res.json();
-      throw new Error(error);
+      throw new Error("There was an error posting this palette!");
     }
     const newPalette = await res.json();
     return newPalette;

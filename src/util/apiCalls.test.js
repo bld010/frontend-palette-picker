@@ -2,7 +2,9 @@ import {
   getFolders,
   getPalettes,
   deleteFolder,
-  deletePalette
+  deletePalette,
+  postFolder,
+  postPalette
 } from "./apiCalls";
 
 describe("apiCalls", () => {
@@ -304,6 +306,110 @@ describe("apiCalls", () => {
       });
 
       expect(deletePalette()).rejects.toEqual(
+        Error(Error("fetch error message"))
+      );
+    });
+  });
+
+  describe("POST folders", () => {
+    let postedFolder = {
+      id: 87,
+      name: "Money Greens",
+      created_at: "2019-10-15T01:01:50.370Z",
+      updated_at: "2019-10-15T01:01:50.370Z"
+    };
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(postedFolder)
+        });
+      });
+    });
+
+    it("should call fetch", () => {
+      postFolder();
+
+      expect(window.fetch).toHaveBeenCalled();
+    });
+
+    it("should post a palette (HAPPY)", async () => {
+      const result = await postFolder();
+
+      expect(result).toEqual(postedFolder);
+    });
+
+    it("should return an error when the promise rejects (SAD)", async () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      await expect(postFolder()).rejects.toEqual(
+        Error(Error("There was an error posting this folder!"))
+      );
+    });
+
+    it("should return an error when the promise rejects, ex. the server is down (SAD)", () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject(Error("fetch error message"));
+      });
+      expect(postFolder()).rejects.toEqual(Error(Error("fetch error message")));
+    });
+  });
+
+  describe("POST palettes", () => {
+    let postedPalette = {
+      id: 125,
+      color1: "#00ed3f",
+      color2: "#e09e72",
+      color3: "#166c8e",
+      color4: "#d1ce25",
+      color5: "#f9dd89",
+      name: "1",
+      folder_id: 84,
+      created_at: "2019-10-15T01:01:16.495Z",
+      updated_at: "2019-10-15T01:01:16.495Z"
+    };
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(postedPalette)
+        });
+      });
+    });
+
+    it("should call fetch", () => {
+      postPalette();
+
+      expect(window.fetch).toHaveBeenCalled();
+    });
+
+    it("should post a palette (HAPPY)", async () => {
+      const result = await postPalette();
+
+      expect(result).toEqual(postedPalette);
+    });
+
+    it("should return an error when the promise rejects (SAD)", async () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      await expect(postPalette()).rejects.toEqual(
+        Error(Error("There was an error posting this palette!"))
+      );
+    });
+
+    it("should return an error when the promise rejects, ex. the server is down (SAD)", () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject(Error("fetch error message"));
+      });
+      expect(postPalette()).rejects.toEqual(
         Error(Error("fetch error message"))
       );
     });
