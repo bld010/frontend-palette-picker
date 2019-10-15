@@ -81,59 +81,74 @@ describe('ColorDisplay', () => {
 
   describe('generateNewRandomPalette', () => {
     it('should create an palette with 5 randomly-generated hex codes', () => {
+      wrapper.instance().generateNewRandomPalette();
 
+      let colors = wrapper.state().currentPalette.colors
+
+      expect(colors.length).toEqual(5);
+
+      expect(colors[0].hex[0]).toEqual('#');
+      expect(colors[0].hex.length).toEqual(7);
     })
   })
 
-  describe('getNewColors', () => {
-    it('should generate new colors for any unlocked colors in the palette', () => {
+  // describe('getNewColors', () => {
+  //   it('should generate new colors for any unlocked colors in the palette', () => {
 
-    })
+  //   })
 
-    it('should fire generateColorsElements', () => {
+  //   it('should fire generateColorsElements', () => {
 
-    })
-  })
+  //   })
+  // })
 
   describe('displayModal', () => {
     it('should change showModal in state to true', () => {
+      wrapper.instance().setState({showModal: false})
 
+      wrapper.instance().displayModal();
+
+      expect(wrapper.state().showModal).toEqual(true);
     })
   })
 
   describe('hideModal', () => {
     it('should change showModal in state to false', () => {
+      wrapper.instance().setState({showModal: true})
 
+      wrapper.instance().hideModal();
+
+      expect(wrapper.state().showModal).toEqual(false);
     })
   })
 
-  describe('savePalette', () => {
-    it('should create a properly-formatted palette with currentPalette', () => {
+  // describe('savePalette', () => {
+  //   it('should create a properly-formatted palette with currentPalette', () => {
 
-    })
+  //   })
 
-    it('should fire postPalette', () => {
+  //   it('should fire postPalette', () => {
 
-    })
+  //   })
 
-    it('should fire reAssignData', () => {
+  //   it('should fire reAssignData', () => {
 
-    })
+  //   })
 
-    it('should fire displayFolderPalettes', () => {
+  //   it('should fire displayFolderPalettes', () => {
 
-    })
+  //   })
 
-    it('should fire hideModal', () => {
+  //   it('should fire hideModal', () => {
 
-    })
-  })
+  //   })
+  // })
 
 
-  describe('componentDidUpdate', () => {
-    it('should set currentPalette in state if palette from props changes', () => {
+  // describe('componentDidUpdate', () => {
+  //   it('should set currentPalette in state if palette from props changes', () => {
 
-    })
-  })
+  //   })
+  // })
 
 })
