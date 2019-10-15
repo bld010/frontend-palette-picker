@@ -3,8 +3,15 @@ import { shallow } from 'enzyme';
 import App from './App';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { getPalettes, getFolders } from './util/apiCalls';
+import { cleanPalettes, cleanFolders, cleanData } from './util/cleaners';
+
+jest.mock('./util/apiCalls');
+jest.mock('./util/cleaners');
 
 configure({ adapter: new Adapter() });
+
+
 
 describe('App', () => {
 
@@ -52,13 +59,25 @@ describe('App', () => {
         mockPalette3,
         mockPalette4
       ], 
-    }, 
-    
+    }
   ]
 
   beforeEach(() => {
     wrapper = shallow(<App />)
+
+    getPalettes.mockImplementation(() => {
+      return Promise.resolve()
+    })
+ 
+
+    getFolders.mockImplementation(() => {
+      return Promise.resolve()
+    })
+
+
   })
+
+
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -66,9 +85,9 @@ describe('App', () => {
   describe('displayFolderPalettes', () => {
     it('should set state with correct folder based on id', async () => {
       
-      await wrapper.instance().setState({folders: mockFolders})
+      wrapper.instance().setState({folders: mockFolders})
 
-      wrapper.instance().displayFolderPalettes(1)
+      await wrapper.instance().displayFolderPalettes(1)
 
       let expected = { 
         name: "Folder 1", 
@@ -78,7 +97,7 @@ describe('App', () => {
           mockPalette2
         ], 
       }
-      
+
       expect(wrapper.state().currentFolder).toEqual(expected);
       
     })
@@ -87,12 +106,19 @@ describe('App', () => {
   describe('setCurrentPalette', () => {
     it('should set state with the palette selected', () => {
 
+      wrapper.instance().setCurrentPalette(mockPalette1)
+
+      expect(wrapper.state().currentPalette).toEqual(mockPalette1)
     })
   })
 
   describe('reAssignData', () => {
     it('should fire getPalettes', () => {
 
+      
+      wrapper.instance().reAssignData();
+      
+      expect(getPalettes).toHaveBeenCalled()
     })
 
     it('should fire cleanPalettes with the fetched palettes', () => {
