@@ -70,7 +70,12 @@ class App extends Component {
     return(
       <main className="App">
         <h1>Palette Picker</h1>
-        <ColorDisplay palette={this.state.currentPalette} folders={this.state.folders} reAssignData={this.reAssignData} displayFolderPalettes={this.displayFolderPalettes}/>
+        <ColorDisplay 
+          palette={this.state.currentPalette} 
+          folders={this.state.folders} 
+          reAssignData={this.reAssignData} 
+          displayFolderPalettes={this.displayFolderPalettes}
+        />
         <section>
           <div className="folders">
             <h3>Folders</h3>

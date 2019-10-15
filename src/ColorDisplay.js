@@ -102,7 +102,6 @@ export default class ColorDisplay extends Component {
     this.setState({showModal: false})
   }
 
-  // (colorOne, colorTwo, colorThree, colorFour, colorFive, folderId, paletteName)
   savePalette = async (e, folder, paletteName) => {
     e.preventDefault()
     let colorOne = this.state.currentPalette.colors[0].hex
@@ -113,8 +112,7 @@ export default class ColorDisplay extends Component {
     await postPalette(colorOne, colorTwo, colorThree, colorFour, colorFive, folder.id, paletteName)
     await this.props.reAssignData()
     this.props.displayFolderPalettes(folder.id)
-    // this.props.palette()
-    this.setState({showModal: false})
+    this.hideModal();
   }
 
 
