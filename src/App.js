@@ -52,12 +52,7 @@ class App extends Component {
   
   componentDidMount = async () => {
     try {
-      const fetchedPalettes = await getPalettes()
-      const cleanedPalettes = await cleanPalettes(fetchedPalettes)
-      const fetchedFolders = await getFolders();
-      const cleanedFolders = await cleanFolders(fetchedFolders)
-      const cleanedData = await cleanData(cleanedFolders, cleanedPalettes)
-      await this.setState({ folders: cleanedData });
+      this.reAssignData();
     } catch ({ message }) {
       this.setState({ error: message });
     }

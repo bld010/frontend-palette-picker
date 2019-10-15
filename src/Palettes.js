@@ -33,14 +33,23 @@ class Palettes extends Component {
    return this.props.folder.palettes.map(palette => {
       return <li key={palette.id}>
         <div class="palette-div">
-          <p tabIndex={0} onKeyDown={(e) => this.handleSetPaletteEnter(e, palette)} onClick={() => this.props.setCurrentPalette(palette)}>
+          <p tabIndex={0} 
+          onKeyDown={(e) => this.handleSetPaletteEnter(e, palette)} 
+          onClick={() => this.props.setCurrentPalette(palette)}>
             {palette.name}
           </p>
           <div className="trash"> 
-            <FaTrash tabIndex={0} onKeyDown={(e) => this.handleDeleteEnter(e, palette)} onClick={() => this.props.deletePalette(palette)}/>
+            <FaTrash 
+            tabIndex={0} 
+            onKeyDown={(e) => this.handleDeleteEnter(e, palette)} 
+            onClick={() => this.props.deletePalette(palette)}/>
           </div>
         </div>
-        <MiniPalette tabIndex={0} onKeyDown={(e) => this.handleEnter(e, palette)} setCurrentPalette={this.props.setCurrentPalette} palette={palette}/>
+        <MiniPalette 
+        tabIndex={0} 
+        onKeyDown={(e) => this.handleEnter(e, palette)} 
+        setCurrentPalette={this.props.setCurrentPalette} 
+        palette={palette}/>
       </li>
     })
   }
@@ -58,11 +67,14 @@ class Palettes extends Component {
       </div>
       )
     } else {
-
       return(
         <div className="Palettes">
           <ul>
-            <li>Select a folder to see the palettes.</li>
+            <li style={{width: "300px", textAlign: "center"}}>
+              Click the random button above to generate random palettes,
+              save a palette with the save button,
+              or select a folder (left) to see saved palettes.
+            </li>
           </ul>
         </div>
       )
