@@ -54,5 +54,4 @@ describe("Palettes", () => {
 
     expect(wrapper.instance().handleSetPaletteEnter).toHaveBeenCalled()
   })
-
 });

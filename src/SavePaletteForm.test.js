@@ -10,6 +10,7 @@ jest.mock('./util/apiCalls.js')
 configure({ adapter: new Adapter() });
 
 describe("SavePaletteForm", () => {
+  let mockPostFolder;
   let mockHideModal = jest.fn();
   let mockSavePalette = jest.fn();
   let mockFolders = [
@@ -71,9 +72,7 @@ describe("SavePaletteForm", () => {
       preventDefault: jest.fn()
     };
     const expected = "Sweet Potatoes";
-
     wrapper.instance().handleChangeOfInput(mockEvent);
-
     expect(wrapper.state("folderName")).toEqual(expected);
   });
 

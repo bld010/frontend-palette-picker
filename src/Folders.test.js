@@ -51,13 +51,14 @@ describe("Folders", () => {
   });
 
   it('should call handleDeleteFolderEnter on the keydown of a trash', () => {
-    // wrapper.instance().handleDeleteFolderEnter = jest.fn()
-    wrapper.find('.trash').first().simulate('keydown', {keyCode: 13})
-    expect(wrapper.instance().deleteFolderPalettes).toHaveBeenCalled()
+    wrapper.instance().handleDeleteFolderEnter = jest.fn()
+    wrapper.find('.faTrash').first().simulate('keydown', {keyCode: 13})
+    expect(wrapper.instance().handleDeleteFolderEnter).toHaveBeenCalled()
   });
 
   it('should call handleDisplayFolderEnter on the keydown of a folder', () => {
-    wrapper.find('p').first().simulate('keydown', {keyCode: 13})
+    wrapper.instance().handleDisplayFolderEnter = jest.fn()
+    wrapper.find('.folder-list').first().simulate('keydown', {keyCode: 13})
     expect(wrapper.instance().handleDisplayFolderEnter).toHaveBeenCalled()
   });
 
@@ -70,5 +71,4 @@ describe("Folders", () => {
     wrapper.find('p').first().simulate('click')
     expect(mockDisplayFolderPalettes).toHaveBeenCalled()
   });
-
 });
