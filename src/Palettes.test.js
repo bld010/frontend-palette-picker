@@ -3,6 +3,8 @@ import { shallow } from "enzyme";
 import Palettes from "./Palettes";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import ReactDOM from 'react-dom';
+
 
 configure({ adapter: new Adapter() });
 
@@ -34,6 +36,7 @@ describe("Palettes", () => {
     />
   );
 
+
   it("should match the snapshot", () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -52,48 +55,4 @@ describe("Palettes", () => {
     expect(wrapper.instance().handleSetPaletteEnter).toHaveBeenCalled()
   })
 
-  it('should call componentDidUpdate on a props change', () => {
-    const handleComponentDidUpdate = jest.fn()
-    const prevProps = {
-        folder: {
-            id: 86,
-            name: "Mocky",
-            palettes: [
-              {
-                colors: [
-                  { hex: "#ad0c34", locked: false },
-                  { hex: "#74dbd4", locked: false },
-                  { hex: "#db9b6b", locked: false },
-                  { hex: "#9863f9", locked: false },
-                  { hex: "#f9dc98", locked: false }
-                ]
-              }
-            ]
-          },
-        handleComponentDidUpdate
-    }
-    const newprops = {
-        folder: {
-            id: 86,
-            name: "Blahhh",
-            palettes: [
-              {
-                colors: [
-                  { hex: "#ad0c34", locked: false },
-                  { hex: "#74dbd4", locked: false },
-                  { hex: "#db9b6b", locked: false },
-                  { hex: "#9863f9", locked: false },
-                  { hex: "#f9dc98", locked: false }
-                ]
-              }
-            ]
-          },
-        handleComponentDidUpdate
-      }
-
-    const wrapper = shallow(<Palettes {...prevProps} />)
-    wrapper.setProps(newProps)
-
-    expect(handleComponentDidUpdate).toHaveBeenCalled()
-  })
 });

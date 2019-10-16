@@ -24,11 +24,12 @@ class Palettes extends Component {
     }
   }
 
-  componentDidUpdate = (prevProps) => {
-    if (this.props.folder !== prevProps.folder) {
-      this.setState( { reload: true })
-    }
-  }
+  // componentDidUpdate = (prevProps) => {
+  //   if (this.props.folder !== prevProps.folder) {
+  //     let reload = !this.setState.reload
+  //     this.setState( { reload })
+  //   }
+  // }
 
   getPalettesList = () => {
    return this.props.folder.palettes.map(palette => {
