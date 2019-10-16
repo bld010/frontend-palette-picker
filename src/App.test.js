@@ -141,14 +141,36 @@ describe('App', () => {
       expect(cleanFolders).toHaveBeenCalledWith(expected)
     })
 
-    // it('should fire cleanData with the cleaned palettes and folders', () => {
+    it('should set state with cleaned data', async () => {
       
+      let wrapper = shallow(<App />)
+      
+      getPalettes.mockImplementation(() => {
+        return Promise.resolve(['rawPalettes'])
+      })
+      
+      wrapper.instance().cleanPalettes = jest.fn().mockImplementation(() => {
+        return Promise.resolve(['cleanedPalettes'])
+      })
 
-    // })
+      getFolders.mockImplementation(() => {
+        return Promise.resolve(['rawFolders'])
+      })
 
-    // it('should set state with the cleaned data', () => {
+      cleanFolders.mockImplementation(() => {
+        return Promise.resolve(['cleanedFolders'])
+      })
 
-    // })
+      cleanData.mockImplementation(() => {
+        return Promise.resolve(['cleanedData'])
+      })
+
+      await wrapper.instance().reAssignData();
+
+      expect(wrapper.state().folders).toEqual(['cleanedData'])
+
+    })
+
   })
 
   describe('deleteFolder', () => {
