@@ -51,7 +51,6 @@ describe("Folders", () => {
   });
 
   it('should call handleDeleteFolderEnter on the keydown of a trash', () => {
-    // wrapper.instance().handleDeleteFolderEnter = jest.fn()
     wrapper.find('.trash').first().simulate('keydown', {keyCode: 13})
     expect(wrapper.instance().deleteFolderPalettes).toHaveBeenCalled()
   });

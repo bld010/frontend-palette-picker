@@ -3,7 +3,6 @@ import { shallow } from "enzyme";
 import Palettes from "./Palettes";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import ReactDOM from 'react-dom';
 
 
 configure({ adapter: new Adapter() });
@@ -27,7 +26,6 @@ describe("Palettes", () => {
     ]
   };
   let mockDeleteFolder = jest.fn();
-  let newProps;
   let wrapper = shallow(
     <Palettes
       setCurrentPalette={mockSetCurrentPalette}

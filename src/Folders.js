@@ -34,7 +34,7 @@ export const Folders = props => {
         <p tabIndex={0} onKeyDown={e => handleDisplayFolderEnter(e, folder.id)} onClick={() => props.displayFolderPalettes(folder.id)}>
           {folder.name}</p>
         <div className="trash" >
-          <FaTrash tabIndex={0} onKeyDown={e=> handleDeleteFolderEnter(e, folder)} onClick={() => props.deleteFolder(folder)} onClick={() => props.deleteFolder(folder)} className="faTrash"/>
+          <FaTrash tabIndex={0} onKeyDown={e=> handleDeleteFolderEnter(e, folder)} onClick={() => props.deleteFolder(folder)} className="faTrash"/>
         </div>
       </li>
     );
