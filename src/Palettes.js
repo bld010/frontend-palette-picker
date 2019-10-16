@@ -33,7 +33,7 @@ class Palettes extends Component {
   getPalettesList = () => {
    return this.props.folder.palettes.map(palette => {
       return <li key={palette.id}>
-        <div class="palette-div">
+        <div className="palette-div">
           <p tabIndex={0} onKeyDown={(e) => this.handleSetPaletteEnter(e, palette)} onClick={() => this.props.setCurrentPalette(palette)}>
             {palette.name}
           </p>

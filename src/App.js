@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ColorDisplay from "./ColorDisplay";
-import { Folders } from './Folders';
+import Folders from './Folders';
 import Palettes from './Palettes';
 import { getFolders, getPalettes, deleteFolder, deletePalette } from "./util/apiCalls";
 import { cleanFolders, cleanPalettes, cleanData } from "./util/cleaners"

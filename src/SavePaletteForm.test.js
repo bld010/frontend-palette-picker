@@ -7,6 +7,7 @@ import Adapter from "enzyme-adapter-react-16";
 configure({ adapter: new Adapter() });
 
 describe("SavePaletteForm", () => {
+  let mockPostFolder;
   let mockHideModal = jest.fn();
   let mockSavePalette = jest.fn();
   let mockFolders = [
@@ -68,16 +69,23 @@ describe("SavePaletteForm", () => {
       preventDefault: jest.fn()
     };
     const expected = "Sweet Potatoes";
-
     wrapper.instance().handleChangeOfInput(mockEvent);
-
     expect(wrapper.state("folderName")).toEqual(expected);
   });
 
   it("should update state when createNewFolders is called", async () => {
     const mockEvent = { preventDefault: jest.fn() };
-    const result = wrapper.instance().createNewFolder(mockEvent);
-    const mockPostFolder = wrapper.instance().postFolder 
+    // const result = wrapper.instance().createNewFolder(mockEvent);
+    wrapper.instance().postFolder = jest.fn().mockImplementation(() => {
+      return Promise.resolve()
+    })
+    wrapper.instance().getFolders = jest.fn().mockImplementation(() => {
+      return Promise.resolve([
+       {id: 'blabhaoejrowe'}
+      ])
+    })
+
+    // console.log(wrapper.instance().getFolders)
     mockPostFolder = jest.fn()
     const mockCurrentFolder = {
       id: 84,
@@ -85,10 +93,12 @@ describe("SavePaletteForm", () => {
       created_at: "2019-10-15T01:01:13.675Z",
       updated_at: "2019-10-15T01:01:13.675Z"
     };
-    wrapper.setState({currentFolder: mockCurrentFolder})
+    // wrapper.setState({currentFolder: mockCurrentFolder})
 
-    wrapper.instance().createNewFolder()
-    expect(postFolder).toHaveBeenCalled(1);
+    wrapper.instance().createNewFolder(mockEvent)
+    wrapper.instance().forceUpdate();
+    // await console.log(wrapper.state())
+    // expect(wrapper.instance().postFolder).toHaveBeenCalled();
   });
 
   it("should fire savePallete when the currentFolder and paletteName are true in state", () => {
