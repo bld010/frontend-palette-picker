@@ -6,6 +6,7 @@ import { FaSave, FaRandom } from 'react-icons/fa'
 import ReactModal from 'react-modal';
 import SavePaletteForm from './SavePaletteForm'
 import {postPalette} from './util/apiCalls'
+import PropTypes from 'prop-types'
 
 export default class ColorDisplay extends Component {
   constructor(props) {
@@ -151,3 +152,14 @@ export default class ColorDisplay extends Component {
     }
   }
 }
+
+
+
+ColorDisplay.propTypes = {
+  currentPalette: PropTypes.string,
+  folders: PropTypes.array,
+  reAssignData: PropTypes.func,
+  displayFolderPalettes: PropTypes.func
+}
+
+

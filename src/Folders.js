@@ -1,9 +1,10 @@
 import React from "react";
 import { FaTrash } from "react-icons/fa";
 import "./Folders.scss";
+import PropTypes from 'prop-types'
+
 
 export const Folders = props => {
-
   const handleDisplayFolderEnter = (e, id) => {
     if (e.keyCode === 13) {
       props.displayFolderPalettes(id);
@@ -32,8 +33,8 @@ export const Folders = props => {
       <li key={folder.id}>
         <p tabIndex={0} onKeyDown={e => handleDisplayFolderEnter(e, folder.id)} onClick={() => props.displayFolderPalettes(folder.id)}>
           {folder.name}</p>
-        <div className="trash">
-          <FaTrash tabIndex={0} onKeyDown={e=> handleDeleteFolderEnter(e, folder)} onClick={() => props.deleteFolder(folder)}/>
+        <div className="trash" >
+          <FaTrash tabIndex={0} onKeyDown={e=> handleDeleteFolderEnter(e, folder)} onClick={() => props.deleteFolder(folder)} onClick={() => props.deleteFolder(folder)} className="faTrash"/>
         </div>
       </li>
     );
@@ -46,3 +47,9 @@ export const Folders = props => {
   );
 };
 
+
+Folders.propTypes = {
+  displayFolderPalettes: PropTypes.func,
+  folders: PropTypes.array,
+  deleteFolder: PropTypes.func
+}

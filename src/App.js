@@ -6,6 +6,7 @@ import { getFolders, getPalettes, deleteFolder, deletePalette } from "./util/api
 import { cleanFolders, cleanPalettes, cleanData } from "./util/cleaners"
 import "./App.scss";
 
+
 class App extends Component {
   constructor(props) {
     super(props);

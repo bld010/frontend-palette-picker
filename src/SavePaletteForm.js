@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { postFolder, getFolders } from './util/apiCalls';
 import './SavePaletteForm.scss';
 import MiniPalette from './MiniPalette';
+import PropTypes from 'prop-types'
 
 export class SavePaletteForm extends Component {
     constructor(props) {
@@ -102,3 +103,12 @@ export class SavePaletteForm extends Component {
 }
 
 export default SavePaletteForm;
+
+
+SavePaletteForm.propTypes = {
+    hideModal: PropTypes.func,
+    palette: PropTypes.object,
+    savePalette: PropTypes.func,
+    folders: PropTypes.array
+  }
+  

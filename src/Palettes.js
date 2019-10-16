@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Palettes.scss';
 import MiniPalette from './MiniPalette';
 import { FaTrash } from "react-icons/fa";
+import PropTypes from 'prop-types'
 
 class Palettes extends Component {
   constructor(props) {
@@ -72,3 +73,10 @@ class Palettes extends Component {
 }
 
 export default Palettes;
+
+
+Palettes.propTypes = {
+  setCurrentPalette: PropTypes.func,
+  folders: PropTypes.object,
+  deletePalette: PropTypes.func,
+}
