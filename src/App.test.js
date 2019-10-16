@@ -217,26 +217,28 @@ describe('App', () => {
 
     })
 
-    // it('should update the palettes in currentFolder in state with deleted palette removed', async () => {
-    //   wrapper.instance().setState({folders: mockFolders})
-
-
-
-    //   // deletePalette.mockImplementation(() => {
-    //   //   return Promise.resolve();
-    //   // })
-
-    //   // wrapper.instance().reAssignData = jest.fn().mockImplementation(() => {
-    //   //   return Promise.resolve();
-    //   // })
-
-
-    //   wrapper.instance().deletePaletteAndFetch(mockPalette1);
-    //   // await wrapper.instance().forceUpdate()
-
+    it(`should reassign currentFolder to newly updated folder associated with 
+      the deleted palette`, async () => {
       
+      let wrapper = shallow(<App />)
 
-    // })
+      let expectedId = 1
+
+      wrapper.instance().setState({folders: mockFolders})
+
+      deletePalette.mockImplementation(() => {
+        return Promise.resolve();
+      })
+
+      wrapper.instance().reAssignData = jest.fn().mockImplementation(() => {
+        return Promise.resolve();
+      })
+
+      await wrapper.instance().deletePaletteAndFetch(mockPalette1);
+     
+      await expect(wrapper.state().currentFolder.id).toEqual(expectedId)
+
+    })
 
     it('should set an error in state if deletePalette rejects', async () => {
       deletePalette.mockImplementation(() => {
