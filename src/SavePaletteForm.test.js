@@ -3,6 +3,9 @@ import { shallow } from "enzyme";
 import SavePaletteForm from "./SavePaletteForm";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import { postFolder, getFolders } from './util/apiCalls';
+
+jest.mock('./util/apiCalls.js')
 
 configure({ adapter: new Adapter() });
 
@@ -74,22 +77,42 @@ describe("SavePaletteForm", () => {
     expect(wrapper.state("folderName")).toEqual(expected);
   });
 
-  it("should update state when createNewFolders is called", async () => {
+  it("should update state with new folder when createNewFolders is called", async () => {
     const mockEvent = { preventDefault: jest.fn() };
-    const result = wrapper.instance().createNewFolder(mockEvent);
-    const mockPostFolder = wrapper.instance().postFolder 
-    mockPostFolder = jest.fn()
-    const mockCurrentFolder = {
-      id: 84,
-      name: "Almost Blues",
-      created_at: "2019-10-15T01:01:13.675Z",
-      updated_at: "2019-10-15T01:01:13.675Z"
-    };
-    wrapper.setState({currentFolder: mockCurrentFolder})
 
-    wrapper.instance().createNewFolder()
-    expect(postFolder).toHaveBeenCalled(1);
+    let mockNewFolder = {id: 98, name: 'New Folder'}
+
+    wrapper.instance().setState({ folderName: 'New Folder'});
+
+    postFolder.mockImplementation(() => {
+      return Promise.resolve()
+    })
+
+    let mockNewFolders = [
+      {id: 84, name: 'Almost Blues'},
+      mockNewFolder
+    ]
+
+    getFolders.mockImplementation(() => {
+      return Promise.resolve(mockNewFolders)
+    })
+
+    await wrapper.instance().createNewFolder(mockEvent);
+
+    expect(wrapper.state().currentFolder).toEqual(mockNewFolder);
+    expect(wrapper.state().folders).toEqual(mockNewFolders)
   });
+
+  it('should update state with an error if name is already taken', async () => {
+    const mockEvent = { preventDefault: jest.fn() };
+
+
+    wrapper.instance().setState({ folderName: 'Almost Blues'});
+
+    await wrapper.instance().createNewFolder(mockEvent);
+
+    expect(wrapper.state().error).toEqual("This folder already exists! Please choose a new name!")
+  })
 
   it("should fire savePallete when the currentFolder and paletteName are true in state", () => {
     let mockEvent = { preventDefault: jest.fn() };
@@ -101,10 +124,20 @@ describe("SavePaletteForm", () => {
     expect(mockSavePalette).toHaveBeenCalled();
   });
 
-  //update for currFolder being false as well
-  it("should update state with an error when a form field is missing", () => {
+  it("should update state with an error when a paletteName field is missing", () => {
     let mockEvent = { preventDefault: jest.fn() };
     let defaultState = { currentFolder: true, paletteName: false };
+
+    wrapper.instance().setState(defaultState);
+    wrapper.instance().handleSave(mockEvent);
+    expect(wrapper.state().error).toEqual(
+      "Please enter a name for a palette and select a folder!"
+    );
+  });
+
+  it("should update state with an error when a currentFolder field is missing", () => {
+    let mockEvent = { preventDefault: jest.fn() };
+    let defaultState = { currentFolder: false, paletteName: true };
 
     wrapper.instance().setState(defaultState);
     wrapper.instance().handleSave(mockEvent);
