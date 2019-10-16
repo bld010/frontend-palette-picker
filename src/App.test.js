@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import App from './App';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { getPalettes, getFolders, deletePalette } from './util/apiCalls';
+import { getPalettes, getFolders, deletePalette, deleteFolder } from './util/apiCalls';
 import { cleanPalettes, cleanFolders, cleanData } from './util/cleaners';
 
 jest.mock('./util/apiCalls');
@@ -174,17 +174,41 @@ describe('App', () => {
   })
 
   describe('deleteFolder', () => {
-    // it('should fire deleteFolder with the correct id', () => {
 
-    // })
+    it('should fire deleteFolder with the correct id', () => {
+      
+      wrapper.instance().deleteFolder({id: 2});
 
-    // it('should fire reAssignData', () => {
+      expect(deleteFolder).toHaveBeenCalledWith(2);
+    })
 
-    // })
+    it('should fire reAssignData', async () => {
 
-    // it('should set the currentFolder property to null', () => {
+      deleteFolder.mockImplementation(() => {
+        return Promise.resolve()
+      })
+      wrapper.instance().reAssignData = jest.fn().mockImplementation(() => {
+        return Promise.resolve()
+      })
+      
+      await wrapper.instance().deleteFolder({id: 2});
 
-    // })
+      expect(wrapper.instance().reAssignData).toHaveBeenCalled();
+
+    })
+
+    it('should set the currentFolder property to null', async () => {
+      wrapper.instance().setState({currentFolder: {id: 2, name: 'Test'}})
+      deleteFolder.mockImplementation(() => {
+        return Promise.resolve()
+      })
+      wrapper.instance().reAssignData = jest.fn().mockImplementation(() => {
+        return Promise.resolve()
+      })
+      await wrapper.instance().deleteFolder({id: 2});
+
+      expect(wrapper.state().currentFolder).toEqual(null)
+    })
   })
 
   describe('deletePaletteAndFetch', () => {
@@ -241,6 +265,7 @@ describe('App', () => {
     })
 
     it('should set an error in state if deletePalette rejects', async () => {
+      
       deletePalette.mockImplementation(() => {
         return Promise.reject('Something went wrong')
       })
@@ -253,8 +278,7 @@ describe('App', () => {
     })
 
     it('should set an error in state if reAssignData rejects', async () => {
-      
-
+  
       wrapper.instance().reAssignData = jest.fn().mockImplementation(() => {
         return Promise.reject(Error('Something went wrong'))
       })
