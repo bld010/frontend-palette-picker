@@ -5,7 +5,7 @@
 Welcome to Palette Picker! We are [Brianna DelValle](https://github.com/bld010/) and [Gregory Anderson](https://github.com/gregoryanderson). This repo represents the the React-based front-end of our application.
 
 ### Links
-[Here is a link to the front-end on Heroku!]()
+[Here is a link to the front-end on Heroku!](https://fe-palette.herokuapp.com/)
 
 
 [Back-end on Heroku](https://be-palette.herokuapp.com/api/v1/folders)
