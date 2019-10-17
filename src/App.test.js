@@ -171,6 +171,20 @@ describe('App', () => {
 
     })
 
+    it('should set state with error if a promise is rejected', async () => {
+      let wrapper = shallow(<App />)
+
+      let mockError = {error: 'There was a problem fetching palettes.'}
+      
+      getPalettes.mockImplementation(() => {
+        return Promise.reject(mockError)
+      })
+
+      await wrapper.instance().reAssignData();
+
+      expect(wrapper.state().error).toEqual(mockError)
+    })
+
   })
 
   describe('deleteFolder', () => {
