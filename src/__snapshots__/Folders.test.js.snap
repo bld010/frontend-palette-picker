@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Folders should match the snapshots 1`] = `
+<section
+  className="Folders"
+>
+  <ul>
+    <li
+      key="84"
+    >
+      <p
+        className="folder-list"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        Almost Blues
+      </p>
+      <div
+        className="trash"
+      >
+        <FaTrash
+          className="faTrash"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        />
+      </div>
+    </li>
+    <li
+      key="85"
+    >
+      <p
+        className="folder-list"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        Fuzzy Purple
+      </p>
+      <div
+        className="trash"
+      >
+        <FaTrash
+          className="faTrash"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        />
+      </div>
+    </li>
+    <li
+      key="87"
+    >
+      <p
+        className="folder-list"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        Money Greens
+      </p>
+      <div
+        className="trash"
+      >
+        <FaTrash
+          className="faTrash"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        />
+      </div>
+    </li>
+    <li
+      key="86"
+    >
+      <p
+        className="folder-list"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        Rubber Ducky Takes a Bath
+      </p>
+      <div
+        className="trash"
+      >
+        <FaTrash
+          className="faTrash"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        />
+      </div>
+    </li>
+  </ul>
+</section>
+`;

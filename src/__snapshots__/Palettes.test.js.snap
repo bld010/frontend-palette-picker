@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Palettes should match the snapshot when folder is not provided 1`] = `
+<div
+  className="Palettes"
+>
+  <ul>
+    <li>
+      Select a folder to see the palettes.
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Palettes should match the snapshot when folder is passed through props 1`] = `
+<div
+  className="Palettes"
+>
+  <ul>
+    <li
+      key="1"
+    >
+      <div
+        className="palette-div"
+      >
+        <p
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        />
+        <div
+          className="trash"
+        >
+          <FaTrash
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex={0}
+          />
+        </div>
+      </div>
+      <MiniPalette
+        onKeyDown={[Function]}
+        palette={
+          Object {
+            "colors": Array [
+              Object {
+                "hex": "#ad0c34",
+                "locked": false,
+              },
+              Object {
+                "hex": "#74dbd4",
+                "locked": false,
+              },
+              Object {
+                "hex": "#db9b6b",
+                "locked": false,
+              },
+              Object {
+                "hex": "#9863f9",
+                "locked": false,
+              },
+              Object {
+                "hex": "#f9dc98",
+                "locked": false,
+              },
+            ],
+            "id": 1,
+          }
+        }
+        setCurrentPalette={[MockFunction]}
+        tabIndex={0}
+      />
+    </li>
+    <li
+      key="2"
+    >
+      <div
+        className="palette-div"
+      >
+        <p
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        />
+        <div
+          className="trash"
+        >
+          <FaTrash
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex={0}
+          />
+        </div>
+      </div>
+      <MiniPalette
+        onKeyDown={[Function]}
+        palette={
+          Object {
+            "colors": Array [
+              Object {
+                "hex": "#ad0c34",
+                "locked": false,
+              },
+              Object {
+                "hex": "#74dbd4",
+                "locked": false,
+              },
+              Object {
+                "hex": "#db9b6b",
+                "locked": false,
+              },
+              Object {
+                "hex": "#9863f9",
+                "locked": false,
+              },
+              Object {
+                "hex": "#f9dc98",
+                "locked": false,
+              },
+            ],
+            "id": 2,
+          }
+        }
+        setCurrentPalette={[MockFunction]}
+        tabIndex={0}
+      />
+    </li>
+  </ul>
+</div>
+`;

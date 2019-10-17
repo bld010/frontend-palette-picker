@@ -2,7 +2,6 @@ export const cleanPalettes = rawPalettes => {
   return rawPalettes.map(palette => {
     let {
       name,
-      colors,
       id,
       folder_id,
       color1,

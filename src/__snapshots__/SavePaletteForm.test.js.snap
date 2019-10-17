@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SavePaletteForm should match the snapshot 1`] = `
+<form
+  className="SavePaletteForm"
+>
+  <h2>
+    Save Your Palette
+  </h2>
+  <input
+    name="paletteName"
+    onChange={[Function]}
+    placeholder="New palette name"
+    type="text"
+    value=""
+  />
+  <div
+    className="miniPalette"
+  >
+    <MiniPalette
+      palette={
+        Object {
+          "color1": "#00ed3f",
+          "color2": "#e09e72",
+          "color3": "#166c8e",
+          "color4": "#d1ce25",
+          "color5": "#f9dd89",
+          "created_at": "2019-10-15T01:01:16.495Z",
+          "folder_id": 84,
+          "id": 125,
+          "name": "1",
+          "updated_at": "2019-10-15T01:01:16.495Z",
+        }
+      }
+    />
+  </div>
+  <section>
+    <div
+      className="selectFolder"
+    >
+      <h3>
+        Select A Folder
+      </h3>
+      <div
+        className="folderList"
+      >
+        <p
+          className=" "
+          key="84"
+          onClick={[Function]}
+        >
+          Almost Blues
+        </p>
+        <p
+          className=" "
+          key="85"
+          onClick={[Function]}
+        >
+          Fuzzy Purple
+        </p>
+        <p
+          className=" "
+          key="86"
+          onClick={[Function]}
+        >
+          Rubber Ducky Takes a Bath
+        </p>
+        <p
+          className=" "
+          key="87"
+          onClick={[Function]}
+        >
+          Money Greens
+        </p>
+      </div>
+    </div>
+    <div
+      className="createFolder"
+    >
+      <h3>
+        Create a New Folder
+      </h3>
+      <input
+        name="folderName"
+        onChange={[Function]}
+        placeholder="New folder name"
+        type="text"
+        value=""
+      />
+      <button
+        onClick={[Function]}
+      >
+        Create Folder
+      </button>
+    </div>
+  </section>
+  <div
+    className="bottom-buttons"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Submit!
+    </button>
+    <button
+      onClick={[MockFunction]}
+    >
+      Cancel
+    </button>
+  </div>
+</form>
+`;

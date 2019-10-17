@@ -1,5 +1,6 @@
 import React from 'react';
 import './MiniPalette.scss';
+import PropTypes from 'prop-types'
 
 const MiniPalette = (props) => {
   let { colors } = props.palette;
@@ -17,3 +18,9 @@ const MiniPalette = (props) => {
 }
 
 export default MiniPalette;
+
+
+MiniPalette.propTypes = {
+  setCurrentPalette: PropTypes.func,
+  palette: PropTypes.object
+}

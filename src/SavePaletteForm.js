@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { postFolder, getFolders } from './util/apiCalls';
 import './SavePaletteForm.scss';
 import MiniPalette from './MiniPalette';
+import PropTypes from 'prop-types'
 
 export class SavePaletteForm extends Component {
     constructor(props) {
@@ -44,8 +45,8 @@ export class SavePaletteForm extends Component {
     displayFolders = () => {
         return this.state.folders.map(folder => {
             return (
-                <p className={this.state.currentFolder === folder ? 'active' : ' '}
-                    onClick={(e) => this.setState({currentFolder: folder})}>{folder.name}</p> 
+                <p key={folder.id} className={this.state.currentFolder === folder ? 'active' : ' '}
+                    onClick={() => this.setState({currentFolder: folder})}>{folder.name}</p> 
             )
         })
     }
@@ -102,3 +103,12 @@ export class SavePaletteForm extends Component {
 }
 
 export default SavePaletteForm;
+
+
+SavePaletteForm.propTypes = {
+    hideModal: PropTypes.func,
+    palette: PropTypes.object,
+    savePalette: PropTypes.func,
+    folders: PropTypes.array
+  }
+  
