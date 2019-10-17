@@ -52,7 +52,6 @@ export class Folders extends Component {
               tabIndex={0}
               onKeyDown={e => this.handleDeleteFolderEnter(e, folder)}
               onClick={() => this.props.deleteFolder(folder)}
-              onClick={() => this.props.deleteFolder(folder)}
               className="faTrash"
             />
           </div>
