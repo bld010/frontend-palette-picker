@@ -1,3 +1,5 @@
+(https://user-images.githubusercontent.com/30326085/66967965-07be5c80-f040-11e9-905c-2801e32a86fd.png)
+
 # Palette Picker!
 
 Welcome to Palette Picker! We are [Brianna DelValle](https://github.com/bld010/) and [Gregory Anderson](https://github.com/gregoryanderson). This repo represents the the React-based front-end of our application.
@@ -16,11 +18,11 @@ Our goal was to create a stylish and modern CRUD app by using clean, symantic, a
 
 ### Technologies Utilized
 
-1.React
-1.Jest
-2.Enzyme
-4.RESTful API fetches
-5.Semantic UI
+1. React
+1. Jest
+2. Enzyme
+4. RESTful API fetches
+5. Semantic UI
 
 ### Project Management 
 
@@ -37,14 +39,16 @@ When starting out, it is always important to define expectations of the project
 
 From there, we began wireframing..
 
-[Wireframe](https://user-images.githubusercontent.com/30326085/66967545-887c5900-f03e-11e9-8d8e-15910b1b33b9.png)
+(https://user-images.githubusercontent.com/30326085/66967545-887c5900-f03e-11e9-8d8e-15910b1b33b9.png)
 
 ### Cloning
 
 Please use the site on Heroku with the link above! But, if you are interested in cloning the repo..
 
 First, clone the repo down to your local machine.
+
 Second, install all of the dependencies with ```npm i```
+
 Finally, start the app with ```npm start```
 
 If you are interested in viewing our test coverage use ```npm test```
