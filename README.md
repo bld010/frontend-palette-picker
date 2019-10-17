@@ -1,4 +1,4 @@
-(https://user-images.githubusercontent.com/30326085/66967965-07be5c80-f040-11e9-905c-2801e32a86fd.png)
+![Palette Picker](https://user-images.githubusercontent.com/30326085/66967965-07be5c80-f040-11e9-905c-2801e32a86fd.png)
 
 # Palette Picker!
 
@@ -39,7 +39,7 @@ When starting out, it is always important to define expectations of the project
 
 From there, we began wireframing..
 
-(https://user-images.githubusercontent.com/30326085/66967545-887c5900-f03e-11e9-8d8e-15910b1b33b9.png)
+![Wireframe](https://user-images.githubusercontent.com/30326085/66967545-887c5900-f03e-11e9-8d8e-15910b1b33b9.png)
 
 ### Cloning
 
