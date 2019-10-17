@@ -27,11 +27,21 @@ exports[`ColorDisplay should match the snapshot 1`] = `
         palette={
           Object {
             "colors": Array [
-              "blue",
-              "green",
-              "pink",
-              "purple",
-              "black",
+              Object {
+                "hex": "blue",
+              },
+              Object {
+                "hex": "green",
+              },
+              Object {
+                "hex": "pink",
+              },
+              Object {
+                "hex": "purple",
+              },
+              Object {
+                "hex": "black",
+              },
             ],
             "folder_id": 1,
             "id": 22,
@@ -75,13 +85,15 @@ exports[`ColorDisplay should match the snapshot 1`] = `
         className="color"
         style={
           Object {
-            "backgroundColor": undefined,
+            "backgroundColor": "blue",
           }
         }
       >
         <p
           className="hexCode"
-        />
+        >
+          blue
+        </p>
         <div
           className="lock"
           onClick={[Function]}
@@ -101,13 +113,15 @@ exports[`ColorDisplay should match the snapshot 1`] = `
         className="color"
         style={
           Object {
-            "backgroundColor": undefined,
+            "backgroundColor": "green",
           }
         }
       >
         <p
           className="hexCode"
-        />
+        >
+          green
+        </p>
         <div
           className="lock"
           onClick={[Function]}
@@ -127,13 +141,15 @@ exports[`ColorDisplay should match the snapshot 1`] = `
         className="color"
         style={
           Object {
-            "backgroundColor": undefined,
+            "backgroundColor": "pink",
           }
         }
       >
         <p
           className="hexCode"
-        />
+        >
+          pink
+        </p>
         <div
           className="lock"
           onClick={[Function]}
@@ -153,13 +169,15 @@ exports[`ColorDisplay should match the snapshot 1`] = `
         className="color"
         style={
           Object {
-            "backgroundColor": undefined,
+            "backgroundColor": "purple",
           }
         }
       >
         <p
           className="hexCode"
-        />
+        >
+          purple
+        </p>
         <div
           className="lock"
           onClick={[Function]}
@@ -179,13 +197,15 @@ exports[`ColorDisplay should match the snapshot 1`] = `
         className="color"
         style={
           Object {
-            "backgroundColor": undefined,
+            "backgroundColor": "black",
           }
         }
       >
         <p
           className="hexCode"
-        />
+        >
+          black
+        </p>
         <div
           className="lock"
           onClick={[Function]}

@@ -3,6 +3,9 @@ import { shallow } from 'enzyme';
 import ColorDisplay from './ColorDisplay';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { postPalette } from './util/apiCalls';
+
+jest.mock('./util/apiCalls')
 
 configure({ adapter: new Adapter() });
 
@@ -14,12 +17,14 @@ describe('ColorDisplay', () => {
     id: 22,
     name: 'Winter Wonders',
     folder_id: 1,
-    colors: ['blue', 'green', 'pink', 'purple', 'black']
+    colors: [{hex: 'blue'}, {hex: 'green'}, {hex: 'pink'}, {hex: 'purple'}, {hex: 'black'}]
   }
 
   let mockDisplayFolderPalettes = jest.fn();
 
-  let mockReAssignData = jest.fn()
+  let mockReAssignData = jest.fn().mockImplementation(() => {
+    return Promise.resolve();
+  })
 
   beforeEach(() => {
     wrapper = shallow(<ColorDisplay 
@@ -122,27 +127,48 @@ describe('ColorDisplay', () => {
     })
   })
 
-  // describe('savePalette', () => {
-  //   it('should create a properly-formatted palette with currentPalette', () => {
+  describe('savePalette', () => {
 
-  //   })
+    let mockEvent;
+    beforeEach(() => {
+      mockEvent = {preventDefault: () => {}};
 
-  //   it('should fire postPalette', () => {
+      postPalette.mockImplementation(() => {
+        return Promise.resolve()
+      })
+    })
 
-  //   })
+    it('should call postPalette with current palette info', () => {
+      
+      wrapper.instance().savePalette(mockEvent, {id: 1}, 'Palletteee');
 
-  //   it('should fire reAssignData', () => {
+      expect(postPalette).toHaveBeenCalledWith("blue", "green", "pink", "purple", "black", 1, "Palletteee")
+    })
 
-  //   })
+    it('should fire reAssignData', () => {
+      
+      wrapper.instance().savePalette(mockEvent, {id: 2}, 'Pallettooo');
 
-  //   it('should fire displayFolderPalettes', () => {
+      expect(mockReAssignData).toHaveBeenCalled();
+    })
 
-  //   })
+    it('should fire displayFolderPalettes', () => {
 
-  //   it('should fire hideModal', () => {
+      wrapper.instance().savePalette(mockEvent, {id: 2}, 'Pallettooo');
 
-  //   })
-  // })
+      expect(mockDisplayFolderPalettes).toHaveBeenCalledWith(2);
+
+    })
+
+    it('should fire hideModal', async () => {
+
+      let mockHideModal = jest.fn()
+      wrapper.instance().hideModal = mockHideModal
+      wrapper.instance().displayModal();
+      await wrapper.instance().savePalette(mockEvent, {id: 2}, 'Pallettooo');
+      expect(mockHideModal).toHaveBeenCalled();
+    })
+  })
 
 
   // describe('componentDidUpdate', () => {
