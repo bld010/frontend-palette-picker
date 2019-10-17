@@ -116,65 +116,65 @@ export const postPalette = async (
   }
 };
 
-export const patchFolder = async (folderName, id) => {
-  const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/folders/${id}`;
-  const body = {
-    name: folderName
-  };
-  const options = {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  };
+// export const patchFolder = async (folderName, id) => {
+//   const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/folders/${id}`;
+//   const body = {
+//     name: folderName
+//   };
+//   const options = {
+//     method: "PATCH",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify(body)
+//   };
 
-  try {
-    const res = await fetch(url, options);
-    if (!res.ok) {
-      const error = await res.json();
-      throw new Error(error);
-    }
-    const patchedFolder = await res.json();
-    return patchedFolder;
-  } catch (error) {
-    throw new Error(error);
-  }
-};
+//   try {
+//     const res = await fetch(url, options);
+//     if (!res.ok) {
+//       const error = await res.json();
+//       throw new Error(error);
+//     }
+//     const patchedFolder = await res.json();
+//     return patchedFolder;
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// };
 
-export const patchPalette = async (
-  colorOne,
-  colorTwo,
-  colorThree,
-  colorFour,
-  colorFive,
-  folderId,
-  paletteName,
-  id
-) => {
-  const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/palettes/${id}`;
-  const body = {
-    color1: colorOne,
-    color2: colorTwo,
-    color3: colorThree,
-    color4: colorFour,
-    color5: colorFive,
-    folder_id: folderId,
-    name: paletteName
-  };
-  const options = {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  };
+// export const patchPalette = async (
+//   colorOne,
+//   colorTwo,
+//   colorThree,
+//   colorFour,
+//   colorFive,
+//   folderId,
+//   paletteName,
+//   id
+// ) => {
+//   const url = process.env.REACT_APP_BACKEND_URL + `/api/v1/palettes/${id}`;
+//   const body = {
+//     color1: colorOne,
+//     color2: colorTwo,
+//     color3: colorThree,
+//     color4: colorFour,
+//     color5: colorFive,
+//     folder_id: folderId,
+//     name: paletteName
+//   };
+//   const options = {
+//     method: "PATCH",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify(body)
+//   };
 
-  try {
-    const res = await fetch(url, options);
-    if (!res.ok) {
-      const error = await res.json();
-      throw new Error(error);
-    }
-    const patchedPalette = await res.json();
-    return patchedPalette;
-  } catch (error) {
-    throw new Error(error);
-  }
-};
+//   try {
+//     const res = await fetch(url, options);
+//     if (!res.ok) {
+//       const error = await res.json();
+//       throw new Error(error);
+//     }
+//     const patchedPalette = await res.json();
+//     return patchedPalette;
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// };

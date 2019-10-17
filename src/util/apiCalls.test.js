@@ -346,10 +346,11 @@ describe("apiCalls", () => {
           ok: false
         });
       });
-      await expect(postFolder()).rejects.toEqual(
+      await expect(postFolder).toEqual(
         Error(Error("There was an error posting this folder!"))
       );
     });
+
 
     it("should return an error when the promise rejects, ex. the server is down (SAD)", () => {
       window.fetch = jest.fn().mockImplementation(() => {

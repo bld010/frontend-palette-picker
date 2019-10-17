@@ -170,11 +170,4 @@ describe('ColorDisplay', () => {
     })
   })
 
-
-  // describe('componentDidUpdate', () => {
-  //   it('should set currentPalette in state if palette from props changes', () => {
-
-  //   })
-  // })
-
 })
