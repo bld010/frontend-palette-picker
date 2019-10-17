@@ -6,8 +6,9 @@ Welcome to Palette Picker! We are [Brianna DelValle](https://github.com/bld010/)
 [Here is a link to the front-end on Heroku!]()
 
 
-[And the back-end on Heroku](https://be-palette.herokuapp.com/api/v1/folders)
-[Finally, a link to the back-end repository](https://github.com/gregoryanderson/backend-palette-picker)
+[Back-end on Heroku](https://be-palette.herokuapp.com/api/v1/folders)
+
+[Link to the back-end repository](https://github.com/gregoryanderson/backend-palette-picker)
 
 ### Description
 
@@ -15,11 +16,11 @@ Our goal was to create a stylish and modern CRUD app by using clean, symantic, a
 
 ### Technologies Utilized
 
--React
--Jest
--Enzyme
--RESTful API fetches
--Semantic UI
+1.React
+1.Jest
+2.Enzyme
+4.RESTful API fetches
+5.Semantic UI
 
 ### Project Management 
 
