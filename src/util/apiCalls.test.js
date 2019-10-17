@@ -346,7 +346,7 @@ describe("apiCalls", () => {
           ok: false
         });
       });
-      await expect(postFolder).toEqual(
+      await expect(postFolder()).rejects.toEqual(
         Error(Error("There was an error posting this folder!"))
       );
     });

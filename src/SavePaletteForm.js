@@ -30,7 +30,6 @@ export class SavePaletteForm extends Component {
         } else {
             await postFolder(this.state.folderName)
             let allFolders = await getFolders()
-            await console.log('allFolders', allFolders)
             await this.setState({folders: allFolders})
             const correctFolder = this.state.folders.find(folder => folder.name === this.state.folderName)
             await this.setState({currentFolder: correctFolder})
